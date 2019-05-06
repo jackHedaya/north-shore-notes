@@ -10,7 +10,7 @@ app.post("/blog", async (req, res) => {
 
   Blog.create({ account_id: account_id, title: blogTitle, body: blogBody, date: currentTime })
     .then(x => res.status(200).send())
-    .catch(x => res.status(400).send({ error: "Missing fields." }));
+    .catch(x => res.status(400).send({ error: "Missing fields" }));
 });
 
 module.exports = app;
