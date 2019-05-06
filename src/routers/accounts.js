@@ -2,7 +2,7 @@ const app = require("express").Router();
 
 const User = require("../db/schemas/user");
 
-app.post("/signup", (req, res) => {
+app.post("/signup", async (req, res) => {
   if (!req.body.email || !req.body.password) {
     res.status(400).send({ error: "Username or password not filled" });
     return;
