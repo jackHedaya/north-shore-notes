@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const Blog = mongoose.Schema({
+const Issue = mongoose.Schema({
   account_id: {
     type: String,
     unique: true,
@@ -26,4 +26,4 @@ const Blog = mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model("Blog", Blog);
+module.exports = mongoose.model("Issue", Issue);
