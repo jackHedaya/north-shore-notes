@@ -17,8 +17,8 @@ const Token = mongoose.Schema({
 Token.statics.getAccount = async function(token_id) {
   try {
     const token = await this.findOne({ token_id });
-    
-    return await Account.findOne(token.account_id);
+
+    return Account.findOne({ account_id: token.account_id });
   } catch (_) {
     return null;
   }
