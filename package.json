@@ -17,8 +17,9 @@
     "uuid": "^3.3.2"
   },
   "scripts": {
-    "start": "yarn run dev & nodemon --no-deprecation server/src/index.js",
-    "dev": "react-scripts start",
+    "start": "yarn run client & yarn run server",
+    "client": "react-scripts start",
+    "server": "nodemon --watch server --no-deprecation server/src/index.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
