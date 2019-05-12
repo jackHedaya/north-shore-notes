@@ -41,7 +41,7 @@ function App() {
 						<Link to="/about/">ABOUT</Link>
 					</li>
 				</ul>
-        <Route exact path="/" component={ThisWeek} />
+				<Route exact path="/" component={ThisWeek} />
 				<Route path="/this-week/" component={ThisWeek} />
 				<Route path="/last-week/" component={LastWeek} />
 				<Route path="/previous-issues/" component={PreviousIssues} />
