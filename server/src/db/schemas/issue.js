@@ -3,10 +3,16 @@ const mongoose = require("mongoose");
 const Issue = mongoose.Schema({
   account_id: {
     type: String,
-    unique: true,
+    unique: false,
     required: true
   },
-  
+
+  issue_id: {
+    type: String,
+    unique: true,
+    require: true
+  },
+
   title: {
     type: String,
     unique: true,
