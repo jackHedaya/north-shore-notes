@@ -19,7 +19,7 @@ app.post("/art_image", async (req, res) => {
 
   ArtImage.create({ base64, author: author })
   .then(_ => res.status(200).send())
-  .catch(_ => res.status(400).send({ message: "Something went wrong saving the image" }))
+  .catch(_ => res.status(400).send({ message: "Missing fields" }))
 });
 
 module.exports = app;
