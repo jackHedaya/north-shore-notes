@@ -15,9 +15,9 @@ app.post("/issue", async (req, res) => {
 });
 
 app.post("/art_image", async (req, res) => {
-  const { base64, image_author } = req.body;
+  const { base64, author } = req.body;
 
-  ArtImage.create({ base64, author: image_author })
+  ArtImage.create({ base64, author: author })
   .then(_ => res.status(200).send())
   .catch(_ => res.status(400).send({ message: "Something went wrong saving the image" }))
 });
