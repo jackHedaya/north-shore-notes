@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { HashRouter, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-//imports for the pages
+// imports for the pages
 import About from "./pages/about/About";
 import ThisWeek from "./pages/this-week/ThisWeek";
 import LastWeek from "./pages/last-week/LastWeek";
@@ -20,7 +20,7 @@ function App() {
 
 	return (
 		<div className="App">
-			<HashRouter>
+			<Router>
 				<ul>
 					<li>
 						<Link to="/">HOME</Link>
@@ -47,7 +47,7 @@ function App() {
 				<Route path="/previous-issues/" component={PreviousIssues} />
 				<Route path="/student-art/" component={StudentArt} />
 				<Route path="/about/" component={About} />
-			</HashRouter>
+			</Router>
 			{issues.map((issue) => (
 				<div>
 					<div>{issue.title}</div>
