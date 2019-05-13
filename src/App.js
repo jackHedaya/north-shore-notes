@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
+import "./App.css";
 
 // imports for the pages
 import About from "./pages/about/About";
@@ -21,24 +22,54 @@ function App() {
 	return (
 		<div className="App">
 			<Router>
-				<ul>
+				<ul className="nav">
+					<NavLink to="/" className="navItem">
+						<img src="https://liveparker301.com/wp-content/uploads/2015/10/placeholder-circle.png" alt="logo" height="100" width="100" />
+					</NavLink>
 					<li>
-						<Link to="/">HOME</Link>
+						<NavLink
+							to="/this-week/"
+							activeStyle={{
+								fontWeight: "bold",
+							}}>
+							THIS WEEK
+						</NavLink>
 					</li>
 					<li>
-						<Link to="/this-week/">THIS WEEK</Link>
+						<NavLink
+							to="/last-week/"
+							activeStyle={{
+								fontWeight: "bold",
+							}}>
+							LAST WEEK
+						</NavLink>
 					</li>
 					<li>
-						<Link to="/last-week">LAST WEEK</Link>
+						<NavLink
+							to="/previous-issues/"
+							activeStyle={{
+								fontWeight: "bold",
+							}}>
+							PREVIOUS ISSUES
+						</NavLink>
 					</li>
 					<li>
-						<Link to="/previous-issues/">PREVIOUS ISSUES</Link>
+						<NavLink
+							to="/student-art/"
+							activeStyle={{
+								fontWeight: "bold",
+							}}>
+							STUDENT ART
+						</NavLink>
 					</li>
 					<li>
-						<Link to="/student-art">STUDENT ART</Link>
-					</li>
-					<li>
-						<Link to="/about/">ABOUT</Link>
+						<NavLink
+							to="/about/"
+							activeStyle={{
+								fontWeight: "bold",
+							}}>
+							ABOUT
+						</NavLink>
 					</li>
 				</ul>
 				<Route exact path="/" component={ThisWeek} />
