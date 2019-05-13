@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { HashRouter, Route, Link } from "react-router-dom";
-
+import "./App.css";
 //imports for the pages
 import About from "./pages/about/About";
 import ThisWeek from "./pages/this-week/ThisWeek";
@@ -20,34 +20,39 @@ function App() {
 
 	return (
 		<div className="App">
-			<HashRouter>
-				<ul>
-					<li>
-						<Link to="/">HOME</Link>
-					</li>
-					<li>
-						<Link to="/this-week/">THIS WEEK</Link>
-					</li>
-					<li>
-						<Link to="/last-week">LAST WEEK</Link>
-					</li>
-					<li>
-						<Link to="/previous-issues/">PREVIOUS ISSUES</Link>
-					</li>
-					<li>
-						<Link to="/student-art">STUDENT ART</Link>
-					</li>
-					<li>
-						<Link to="/about/">ABOUT</Link>
-					</li>
-				</ul>
-				<Route exact path="/" component={ThisWeek} />
-				<Route path="/this-week/" component={ThisWeek} />
-				<Route path="/last-week/" component={LastWeek} />
-				<Route path="/previous-issues/" component={PreviousIssues} />
-				<Route path="/student-art/" component={StudentArt} />
-				<Route path="/about/" component={About} />
-			</HashRouter>
+			<div className="nav">
+				<HashRouter>
+					<ul>
+						<li>
+							<Link to="/">HOME</Link>
+						</li>
+						<li>
+							<Link to="/this-week/">THIS WEEK</Link>
+						</li>
+						<li>
+							<Link to="/last-week">LAST WEEK</Link>
+						</li>
+						<li>
+							<Link to="/previous-issues/">PREVIOUS ISSUES</Link>
+						</li>
+						<li>
+							<Link to="/student-art">STUDENT ART</Link>
+						</li>
+						<li>
+							<Link to="/about/">ABOUT</Link>
+						</li>
+					</ul>
+					<Route exact path="/" component={ThisWeek} />
+					<Route path="/this-week/" component={ThisWeek} />
+					<Route path="/last-week/" component={LastWeek} />
+					<Route
+						path="/previous-issues/"
+						component={PreviousIssues}
+					/>
+					<Route path="/student-art/" component={StudentArt} />
+					<Route path="/about/" component={About} />
+				</HashRouter>
+			</div>
 			{issues.map((issue) => (
 				<div>
 					<div>{issue.title}</div>
