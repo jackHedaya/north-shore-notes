@@ -921,9 +921,9 @@
   integrity sha512-+ryw4GU9pjr1uT6lBuErHJg3NYqzwJTvZ75nKuJijEzpd00Uqi6oiawTGDDf5Hl0zWmI7qHfOtaqB0kpQZJQzA==
 
 "@hapi/joi@^15.0.0":
-  version "15.0.2"
-  resolved "https://registry.yarnpkg.com/@hapi/joi/-/joi-15.0.2.tgz#2989041a06ee2941cf6dd247ffff8032640d16bb"
-  integrity sha512-c3NwWBHzUnEavcaCpGaepOcygS17pSnOh5ZYUBz+sfqCP7kC9haLcRnd3U8KFC4TbLFmRwKnmYglsc47m9yapg==
+  version "15.0.3"
+  resolved "https://registry.yarnpkg.com/@hapi/joi/-/joi-15.0.3.tgz#e94568fd859e5e945126d5675e7dd218484638a7"
+  integrity sha512-z6CesJ2YBwgVCi+ci8SI8zixoj8bGFn/vZb9MBPbSyoxsS2PnWYjHcyTM17VLK6tx64YVK38SDIh10hJypB+ig==
   dependencies:
     "@hapi/address" "2.x.x"
     "@hapi/hoek" "6.x.x"
@@ -1912,16 +1912,6 @@ babel-loader@8.0.5:
     loader-utils "^1.0.2"
     mkdirp "^0.5.1"
     util.promisify "^1.0.0"
-
-babel-loader@^8.0.6:
-  version "8.0.6"
-  resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-8.0.6.tgz#e33bdb6f362b03f4bb141a0c21ab87c501b70dfb"
-  integrity sha512-4BmWKtBOBm13uoUwd08UwjZlaw3O9GWf456R9j+5YykFZ6LUIjIKLc0zEZf+hauxPOJs96C8k6FvYD09vWzhYw==
-  dependencies:
-    find-cache-dir "^2.0.0"
-    loader-utils "^1.0.2"
-    mkdirp "^0.5.1"
-    pify "^4.0.1"
 
 babel-plugin-dynamic-import-node@2.2.0:
   version "2.2.0"
@@ -6845,9 +6835,9 @@ negotiator@0.6.2:
   integrity sha512-hZXc7K2e+PgeI1eDBe/10Ard4ekbfrrqG8Ep+8Jmf4JID2bNg7NvCPOZN+kfF574pFQI7mum2AUqDidoKqcTOw==
 
 neo-async@^2.5.0, neo-async@^2.6.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.0.tgz#b9d15e4d71c6762908654b5183ed38b753340835"
-  integrity sha512-MFh0d/Wa7vkKO3Y3LlacqAEeHK0mckVqzDieUKTT+KGxi+zIpeVsFxymkIiRpbpDziHc290Xr9A1O4Om7otoRA==
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
+  integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
 
 nice-try@^1.0.4:
   version "1.0.5"
@@ -6959,9 +6949,9 @@ node-pre-gyp@0.12.0, node-pre-gyp@^0.12.0:
     tar "^4"
 
 node-releases@^1.1.13, node-releases@^1.1.17:
-  version "1.1.18"
-  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.18.tgz#cc98fd75598a324a77188ebddf6650e9cbd8b1d5"
-  integrity sha512-/mnVgm6u/8OwlIsoyRXtTI0RfQcxZoAZbdwyXap0EeWwcOpDDymyCHM2/aR9XKmHXrvizHoPAOs0pcbiJ6RUaA==
+  version "1.1.19"
+  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.19.tgz#c492d1e381fea0350b338b646c27867e88e91b3d"
+  integrity sha512-SH/B4WwovHbulIALsQllAVwqZZD1kPmKCqrhGfR29dXjLAVZMHvBjD3S6nL9D/J9QkmZ1R92/0wCMDKXUUvyyA==
   dependencies:
     semver "^5.3.0"
 
