@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Collapse from '@material-ui/core/Collapse';
 
 import angleDown from "../../assets/angle-down.svg";
 
@@ -48,9 +49,9 @@ function ExpandoBody(props) {
   const { show } = props;
 
   return (
-    <div className="body" style={{ display: show ? undefined : "none" }}>
+    <Collapse in={show} classes={{ wrapperInner: 'body'}}>
       {props.children}
-    </div>
+    </Collapse>
   );
 }
 
