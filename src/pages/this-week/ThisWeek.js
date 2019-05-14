@@ -31,7 +31,12 @@ function Issue(props) {
           <div className="author">By: {author}</div>
         </div>
         <div className="dropdown-icon" onClick={() => setShowBody(!showBody)}>
-          <img className="angle-down" src={angleDown} alt="angle-down" />
+          <img
+            className="angle-down"
+            style={{ transform: showBody ? "rotate(180deg)" : null }}
+            src={angleDown}
+            alt="angle-down"
+          />
         </div>
       </div>
       <ExpandoBody show={showBody}>{body}</ExpandoBody>
