@@ -19,6 +19,7 @@ $issue-font: 'Helvetica Neue';
     .header {
       display: flex;
       width: 100%;
+      cursor: pointer;
 
       .info {
         flex: 0.92;
@@ -52,7 +53,6 @@ $issue-font: 'Helvetica Neue';
         flex: 0.08;
         align-items: center;
         justify-content: center;
-        cursor: pointer;
 
         .angle-down {
           height: 40px;

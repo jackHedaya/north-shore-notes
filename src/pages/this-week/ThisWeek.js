@@ -26,12 +26,12 @@ function Issue(props) {
 
   return (
     <div className="issue">
-      <div className="header">
+      <div className="header" onClick={() => setShowBody(!showBody)}>
         <div className="info">
           <div className="title">{title} </div>
           <div className="author">By: {author}</div>
         </div>
-        <div className="dropdown-icon" onClick={() => setShowBody(!showBody)}>
+        <div className="dropdown-icon">
           <img
             className="angle-down"
             style={{ transform: showBody ? "rotate(180deg)" : null }}
