@@ -10,17 +10,21 @@ import LastWeek from "./pages/last-week/LastWeek";
 import StudentArt from "./pages/student-art/StudentArt";
 import PreviousIssues from "./pages/previous-issues/PreviousIssues";
 
+import "./App.scss"
+
 function App() {
   return (
     <Router>
       <Navigation />
 
-      <Route exact path="/" component={ThisWeek} />
-      <Route exact path="/this-week/" component={ThisWeek} />
-      <Route exact path="/last-week/" component={LastWeek} />
-      <Route exact path="/previous-issues/" component={PreviousIssues} />
-      <Route exact path="/student-art/" component={StudentArt} />
-      <Route exact path="/about/" component={About} />
+      <div className="content">
+        <Route exact path="/" component={ThisWeek} />
+        <Route exact path="/this-week/" component={ThisWeek} />
+        <Route exact path="/last-week/" component={LastWeek} />
+        <Route exact path="/previous-issues/" component={PreviousIssues} />
+        <Route exact path="/student-art/" component={StudentArt} />
+        <Route exact path="/about/" component={About} />
+      </div>
     </Router>
   );
 }
