@@ -1,11 +1,11 @@
 import React from "react";
-import { Link, BrowserRouter as Router, withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 import "./_styles/Navigation.scss";
 
 export default function Navigation() {
   return (
-    <Router>
+    <>
       <ul className="navigation">
         <Link to="/" className="navItem">
           <Logo />
@@ -16,7 +16,7 @@ export default function Navigation() {
         <NavLink to="/student-art/">STUDENT ART</NavLink>
         <NavLink to="/about/">ABOUT</NavLink>
       </ul>
-    </Router>
+    </>
   );
 }
 

@@ -12,22 +12,15 @@ import PreviousIssues from "./pages/previous-issues/PreviousIssues";
 
 function App() {
   return (
-    <div className="App">
-      <Navigation />
-      <Content />
-    </div>
-  );
-}
-
-function Content() {
-  return (
     <Router>
+      <Navigation />
+
       <Route exact path="/" component={ThisWeek} />
-      <Route path="/this-week/" component={ThisWeek} />
-      <Route path="/last-week/" component={LastWeek} />
-      <Route path="/previous-issues/" component={PreviousIssues} />
-      <Route path="/student-art/" component={StudentArt} />
-      <Route path="/about/" component={About} />
+      <Route exact path="/this-week/" component={ThisWeek} />
+      <Route exact path="/last-week/" component={LastWeek} />
+      <Route exact path="/previous-issues/" component={PreviousIssues} />
+      <Route exact path="/student-art/" component={StudentArt} />
+      <Route exact path="/about/" component={About} />
     </Router>
   );
 }
