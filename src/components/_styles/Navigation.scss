@@ -12,8 +12,8 @@
   li {
     margin-top: 35px;
 
-    :hover {
+    .selected, :hover {
       font-weight: bold;
-    }
+		}
   }
 }

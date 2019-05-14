@@ -1,7 +1,7 @@
 import React from "react";
-import { Link, BrowserRouter as Router } from "react-router-dom";
+import { Link, BrowserRouter as Router, withRouter } from "react-router-dom";
 
-import "./_styles/Navigation.scss"
+import "./_styles/Navigation.scss";
 
 export default function Navigation() {
   return (
@@ -20,15 +20,17 @@ export default function Navigation() {
   );
 }
 
-function NavLink(props) {
+const NavLink = withRouter(props => {
+  const isSelected = () => props.location.pathname.includes(props.to);
+
   return (
     <li>
-      <Link to={props.to} activeStyle={{ fontWeight: "bold" }}>
+      <Link to={props.to} className={isSelected() ? "selected" : null}>
         {props.children}
       </Link>
     </li>
   );
-}
+});
 
 function Logo() {
   return (
