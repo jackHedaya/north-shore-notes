@@ -49,6 +49,8 @@ $issue-font: 'Helvetica Neue';
       }
 
       .dropdown-icon {
+        @include non-draggable();
+        
         display: flex;
         flex: 0.08;
         align-items: center;
