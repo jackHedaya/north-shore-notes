@@ -13,30 +13,47 @@ $issue-font: 'Helvetica Neue';
   .issue {
     width: 100%;
     background-color: $ns-green;
-    margin-top: 20px;
+    margin-top: 18px;
+    display: flex;
     // font-family: $main-font;
 
-    .title {
-      @include inner-content();
-      color: white;
+    .info {
+      flex: 0.92;
 
-      padding-top: 10px;
-      padding-bottom: 10px;
-      font-weight: 500;
-      font-size: 15px;
-      font-family: $issue-font;
+      .title {
+        @include inner-content();
+        color: white;
+
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-weight: 500;
+        font-size: 15px;
+        font-family: $issue-font;
+      }
+
+      .author {
+        @include inner-content();
+
+        margin-top: -6px;
+        padding-bottom: 10px;
+
+        font-weight: 400;
+        color: #C6C6C6;
+        font-family: $issue-font;
+        font-size: 12px;
+      }
     }
 
-    .author {
-      @include inner-content();
+    .dropdown-icon {
+      display: flex;
+      flex: 0.08;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
 
-      margin-top: -6px;
-      padding-bottom: 10px;
-
-      font-weight: 400;
-      color: #C6C6C6;
-      font-family: $issue-font;
-      font-size: 12px;
+      .angle-down {
+        height: 40px;
+      }
     }
   }
 }
