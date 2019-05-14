@@ -22,7 +22,7 @@ Before contributing, make sure the following is installed.
 - `$ cd north-shore-notes && yarn`
 
 #### MongoDB
-- There are plans to create seeds for the local database, but for now use Postman.
+- To seed the database, run `$ yarn run seed`.
 
 ## Deploying
 
