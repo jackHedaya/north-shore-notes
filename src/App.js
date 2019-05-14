@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import "./App.css";
 
 import Navigation from "./components/Navigation";
 
@@ -12,15 +11,6 @@ import StudentArt from "./pages/student-art/StudentArt";
 import PreviousIssues from "./pages/previous-issues/PreviousIssues";
 
 function App() {
-  const [issues, setIssues] = useState([]);
-
-  useEffect(() => {
-    fetch("/issue", {})
-      .then(resp => resp.json())
-      .then(body => setIssues(body))
-      .catch(e => console.log(e));
-  }, []);
-
   return (
     <div className="App">
       <Navigation />
