@@ -1,0 +1,19 @@
+@import "../../globals.sass";
+
+.this-week {
+  margin-left: 20px;
+
+  .issue {
+    width: 100%;
+    background-color: $ns-green;
+    margin-top: 20px;
+    color: white;
+    font-family: $main-font;
+
+    .title {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-left: 10px;
+    }
+  }
+}

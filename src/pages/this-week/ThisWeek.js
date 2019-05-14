@@ -8,10 +8,11 @@ function ThisWeek() {
   const issues = useIssues();
 
   return (
-    <div className="content">
+    <div className="this-week">
       {issues.map(({ title, body }) => (
-        <div key={title}>
+        <div className="issue" key={title}>
           <div className="title">{title}</div>
+          <div className="author">By: Jack Hedaya</div>
           <div className="body">{body}</div>
         </div>
       ))}
