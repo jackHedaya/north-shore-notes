@@ -14,46 +14,61 @@ $issue-font: 'Helvetica Neue';
     width: 100%;
     background-color: $ns-green;
     margin-top: 18px;
-    display: flex;
     // font-family: $main-font;
 
-    .info {
-      flex: 0.92;
+    .header {
+      display: flex;
+      width: 100%;
 
-      .title {
-        @include inner-content();
-        color: white;
+      .info {
+        flex: 0.92;
 
-        padding-top: 10px;
-        padding-bottom: 10px;
-        font-weight: 500;
-        font-size: 15px;
-        font-family: $issue-font;
+        .title {
+          @include inner-content();
+          color: white;
+
+          padding-top: 10px;
+          padding-bottom: 10px;
+          font-weight: 500;
+          font-size: 15px;
+          font-family: $issue-font;
+        }
+
+        .author {
+          @include inner-content();
+
+          margin-top: -6px;
+          padding-bottom: 10px;
+
+          font-weight: 400;
+          color: #C6C6C6;
+          font-family: $issue-font;
+          font-size: 12px;
+        }
       }
 
-      .author {
-        @include inner-content();
+      .dropdown-icon {
+        display: flex;
+        flex: 0.08;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
 
-        margin-top: -6px;
-        padding-bottom: 10px;
-
-        font-weight: 400;
-        color: #C6C6C6;
-        font-family: $issue-font;
-        font-size: 12px;
+        .angle-down {
+          height: 40px;
+        }
       }
     }
 
-    .dropdown-icon {
-      display: flex;
-      flex: 0.08;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
+    .body {
+      @include inner-content();
 
-      .angle-down {
-        height: 40px;
-      }
+      width: 100%;
+      padding-top: 10px;
+      padding-bottom: 20px;
+      color: white;
+      font-family: $issue-font;
+      font-size: 15px;
     }
   }
 }
