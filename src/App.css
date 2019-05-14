@@ -10,23 +10,3 @@
 body > #root > div {
 	height: 100vh;
 }
-
-.nav {
-	position: fixed;
-	display: flex;
-	height: 100%;
-	width: 300px;
-	background-color: #0e5833;
-	text-decoration: none !important;
-	flex-direction: column;
-	padding-left: 50px;
-	padding-top: 100px;
-}
-
-li {
-	margin-top: 35px;
-}
-
-li:hover {
-	font-weight: bold;
-}
