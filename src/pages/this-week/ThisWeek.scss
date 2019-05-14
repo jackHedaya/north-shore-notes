@@ -1,19 +1,42 @@
 @import "../../globals.sass";
 
+$issue-font: 'Helvetica Neue';
+
+@mixin inner-content {
+  padding-left: 12px;
+}
+
 .this-week {
   margin-left: 20px;
+  padding-right: 22px;
 
   .issue {
     width: 100%;
     background-color: $ns-green;
     margin-top: 20px;
-    color: white;
-    font-family: $main-font;
+    // font-family: $main-font;
 
     .title {
+      @include inner-content();
+      color: white;
+
       padding-top: 10px;
       padding-bottom: 10px;
-      padding-left: 10px;
+      font-weight: 500;
+      font-size: 15px;
+      font-family: $issue-font;
+    }
+
+    .author {
+      @include inner-content();
+
+      margin-top: -6px;
+      padding-bottom: 10px;
+
+      font-weight: 400;
+      color: #C6C6C6;
+      font-family: $issue-font;
+      font-size: 12px;
     }
   }
 }

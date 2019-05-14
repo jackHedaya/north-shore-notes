@@ -9,11 +9,10 @@ function ThisWeek() {
 
   return (
     <div className="this-week">
-      {issues.map(({ title, body }) => (
+      {issues.map(({ title, body, author = "Anonymous" }) => (
         <div className="issue" key={title}>
-          <div className="title">{title}</div>
-          <div className="author">By: Jack Hedaya</div>
-          <div className="body">{body}</div>
+          <div className="title">{title} </div>
+          <div className="author">By: {author}</div>
         </div>
       ))}
     </div>
