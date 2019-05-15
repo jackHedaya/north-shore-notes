@@ -3,6 +3,7 @@ const uuid = require("uuid/v4");
 
 const Issue = require("../db/schemas/issue");
 const ArtImage = require("../db/schemas/art_image");
+const Author = require("../db/schemas/author");
 
 app.post("/issue", async (req, res) => {
   const { issue_title, issue_body } = req.body;
@@ -14,6 +15,16 @@ app.post("/issue", async (req, res) => {
   Issue.create({ issue_id: issue_id, account_id: account_id, title: issue_title, body: issue_body, date: currentTime })
     .then(_ => res.status(200).send())
     .catch(e => {console.log(e); return res.status(400).send({ error: "Missing fields" })});
+  });
+  
+app.post("/author", async (req, res) => {
+  const { name } = req.body;
+  
+  const author_id = uuid();
+  
+  Author.create({ author_id, name })
+  .then(_ => res.status(200).send())
+  .catch(e => {console.log(e); return res.status(400).send({ error: "Missing fields" })});
 });
 
 app.post("/art_image", async (req, res) => {
