@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const Issue = mongoose.Schema({
-  account_id: {
+  author_id: {
     type: String,
     unique: false,
     required: true
@@ -23,6 +23,12 @@ const Issue = mongoose.Schema({
     type: String,
     unique: false,
     required: true
+  },
+
+  image_id: {
+    type: String,
+    unique: false,
+    required: false
   },
 
   date: {
