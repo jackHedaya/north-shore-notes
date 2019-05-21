@@ -86,6 +86,17 @@ $issue-font: 'Helvetica Neue';
 
         .angle-down {
           height: 40px;
+
+          $rotate-time: .3s;
+          transition: transform $rotate-time ease-in-out;
+          -webkit-transition: -webkit-transform $rotate-time ease-in-out;
+          -ms-transition: -ms-transform $rotate-time ease-in-out;
+
+          &.flipped {
+            transform: rotate(180deg);
+            -webkit-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+          }
         }
       }
     }

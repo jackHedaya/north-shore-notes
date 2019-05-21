@@ -48,8 +48,7 @@ function Issue(props) {
         </div>
         <div className="dropdown-icon">
           <img
-            className="angle-down"
-            style={{ transform: showBody ? "rotate(180deg)" : null }}
+            className={"angle-down " + (showBody ? "flipped" : "")}
             src={angleDown}
             alt="angle-down"
           />
