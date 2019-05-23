@@ -50,7 +50,7 @@ function Issue(props) {
           <img className={"angle-down " + (showBody ? "flipped" : "")} src={angleDown} alt="angle-down" />
         </div>
       </div>
-      <ExpandoBody show={showBody}>{breakNewlines(body)}</ExpandoBody>
+      <ExpandoBody show={showBody}>{body}</ExpandoBody>
     </div>
   );
 }
@@ -91,21 +91,6 @@ function getDateInformation() {
     date: now.getUTCDate(),
     year: now.getUTCFullYear()
   };
-}
-
-/**
- *
- * @param {string} str
- */
-function breakNewlines(str) {
-  return str.split("\n").map((item, key) => {
-    return (
-      <Fragment key={key}>
-        {item}
-        <br />
-      </Fragment>
-    );
-  });
 }
 
 export default ThisWeek;

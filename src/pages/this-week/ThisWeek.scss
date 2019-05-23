@@ -110,6 +110,7 @@ $issue-font: 'Helvetica Neue';
       color: white;
       font-family: $issue-font;
       font-size: 15px;
+      white-space: pre-wrap;
     }
   }
 }
