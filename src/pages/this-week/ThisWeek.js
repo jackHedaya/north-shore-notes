@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import Collapse from "@material-ui/core/Collapse";
 
 import angleDown from "../../assets/angle-down.svg";
@@ -47,14 +47,10 @@ function Issue(props) {
           <div className="author">By: {author}</div>
         </div>
         <div className="dropdown-icon">
-          <img
-            className={"angle-down " + (showBody ? "flipped" : "")}
-            src={angleDown}
-            alt="angle-down"
-          />
+          <img className={"angle-down " + (showBody ? "flipped" : "")} src={angleDown} alt="angle-down" />
         </div>
       </div>
-      <ExpandoBody show={showBody}>{body}</ExpandoBody>
+      <ExpandoBody show={showBody}>{breakNewlines(body)}</ExpandoBody>
     </div>
   );
 }
@@ -95,6 +91,21 @@ function getDateInformation() {
     date: now.getUTCDate(),
     year: now.getUTCFullYear()
   };
+}
+
+/**
+ *
+ * @param {string} str
+ */
+function breakNewlines(str) {
+  return str.split("\n").map((item, key) => {
+    return (
+      <Fragment key={key}>
+        {item}
+        <br />
+      </Fragment>
+    );
+  });
 }
 
 export default ThisWeek;
