@@ -3,6 +3,6 @@ import "./About.scss";
 
 export default class About extends React.Component {
 	render() {
-		return <div>This is the about page</div>;
+		return <div style={{ height: 1000 }}>This is the about page</div>;
 	}
 }
