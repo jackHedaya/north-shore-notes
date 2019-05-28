@@ -1,5 +1,16 @@
 $navigation_width: 250px;
 
+body {
+	margin: 0;
+	padding: 0;
+}
+
 .content {
-  margin-left: $navigation_width;
+	margin-left: $navigation_width;
+	margin-top: 80px;
+}
+
+.container {
+	flex-direction: column;
+	display: flex;
 }
