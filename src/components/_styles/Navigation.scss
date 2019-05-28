@@ -1,31 +1,49 @@
 @import "../../globals.sass";
-
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Rubik:400,900&display=swap");
 .navigation {
+	list-style-type: none;
 	position: fixed;
-	display: flex;
-	height: 100%;
-	width: 200px;
-	background-color: $ns-green;
-	list-style: none;
-	flex-direction: column;
-	padding-left: 50px;
-	padding-top: 50px;
-	margin-top: 0;
-	top: 0;
-	left: 0;
-  
-  li {
-		margin-top: 35px;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	box-shadow: 0px 0px 2px 2px lightgray;
+	background-color: white;
+	height: 65px;
+	flex-direction: row;
+	li {
+		display: inline;
+		font-family: "Rubik", "Open Sans", Arial, Helvetica, sans-serif;
+	}
+	.tabsContainer {
+		flex-direction: row;
+		flex: 1;
+		justify-content: center;
+		align-content: center;
+	}
 
-    .selected, :hover {
-			font-weight: bold;
-		}
+	.navItem {
+		font-weight: bold;
+		float: left;
+		margin-top: 5px;
+		margin-left: 18px;
+		font-size: 50px;
+		color: $dark-green;
+		font-family: "Rubik", Arial, Helvetica, sans-serif;
+	}
+	.other-tabs {
+		justify-content: flex-start;
+		margin-top: 25px;
+		float: left;
+	}
+	.article-tabs {
+		justify-content: flex-end;
+		margin-top: 25px;
+		float: right;
+	}
+}
 
-		a {
-			color: whitesmoke;
-			font-family: $main-font,
-			Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", sans-serif;
-			text-decoration: none;
-		}
-  }
+a {
+	text-decoration: none;
+	color: $light-green;
+	margin-right: 50px;
 }
