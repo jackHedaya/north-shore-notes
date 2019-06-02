@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 
 import Navigation from "./components/Navigation";
 
@@ -13,21 +13,23 @@ import PreviousIssues from "./pages/previous-issues/PreviousIssues";
 import "./App.scss";
 
 function App() {
-	return (
-		<Router>
-			<div className="container">
-				<Navigation />
-				<div className="content">
-					<Route exact path="/" component={ThisWeek} />
-					<Route exact path="/this-week/" component={ThisWeek} />
-					<Route exact path="/last-week/" component={LastWeek} />
-					<Route exact path="/previous-issues/" component={PreviousIssues} />
-					<Route exact path="/student-art/" component={StudentArt} />
-					<Route exact path="/about/" component={About} />
-				</div>
-			</div>
-		</Router>
-	);
+  return (
+    <Router>
+      <div className="container">
+        <Navigation />
+        <div className="content">
+          <Switch>
+            <Redirect exact from="/" to="this-week" />
+            <Route exact path="/this-week/" component={ThisWeek} />
+            <Route exact path="/last-week/" component={LastWeek} />
+            <Route exact path="/previous-issues/" component={PreviousIssues} />
+            <Route exact path="/student-art/" component={StudentArt} />
+            <Route exact path="/about/" component={About} />
+          </Switch>
+        </div>
+      </div>
+    </Router>
+  );
 }
 
 export default App;
