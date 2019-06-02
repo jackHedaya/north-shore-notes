@@ -1,5 +1,5 @@
 @import "../../globals.sass";
-@import url("https://fonts.googleapis.com/css?family=Open+Sans|Rubik:400,900&display=swap");
+
 .navigation {
 	list-style-type: none;
 	position: fixed;
@@ -9,14 +9,16 @@
 	box-shadow: 0px 0px 2px 2px lightgray;
 	background-color: white;
 	height: 85px;
-	flex-direction: row;
+
 	li {
 		display: inline;
 		font-family: "Rubik", "Open Sans", Arial, Helvetica, sans-serif;
 	}
+
 	a:hover {
 		color: $dark-green;
 	}
+
 	.tabsContainer {
 		flex-direction: row;
 		flex: 1;
@@ -29,15 +31,17 @@
 		float: left;
 		margin-top: 15px;
 		margin-left: 18px;
-		font-size: 50px;
+		font-size: 3.12em;
 		color: $dark-green;
 		font-family: "Rubik", Arial, Helvetica, sans-serif;
 	}
+
 	.other-tabs {
 		justify-content: flex-start;
 		margin-top: 35px;
 		float: left;
 	}
+
 	.article-tabs {
 		justify-content: flex-end;
 		margin-top: 35px;
