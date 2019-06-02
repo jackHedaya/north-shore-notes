@@ -1,116 +1,33 @@
 @import "../../globals.sass";
 
-$issue-font: 'Helvetica Neue';
+$issue-margin-between: 3%;
+.issue {
+  font-family: $main-font;
+  margin-bottom: $issue-margin-between;
 
-@mixin inner-content {
-  padding-left: 12px;
-}
+  .title {
+    font-size: 1.2em;
+    color: $gray;
+    font-weight: 400;
+  }
 
-.this-week {
-  margin-left: 20px;
-  padding-right: 22px;
+  .author {
+    font-size: 0.7em;
+    font-weight: 300;
+    margin-bottom: 7px;
+  }
 
-  $header-gray: #707070;
-  .main-header {
-    text-transform: uppercase;
-    display: flex;
-    font-family: $issue-font;
-    font-size: 15px;
-    font-weight: 500;
-    color: $header-gray;
-    margin-top: 20px;
-
-    .volume {
-      flex: 0.5;
-    }
-
-    .date {
-      flex: 0.5;
-      text-align: right;
-    }
+  .body {
+    font-weight: 300;
+    font-size: 1em;
   }
 
   .break {
-    width: 100%;
-    height: 0.5px;
-    background-color: $header-gray;
-    margin-top: 10px;
-    margin-bottom: 30px;
-  }
-
-  .issue {
-    width: 100%;
-    background-color: $dark-green;
-    margin-top: 18px;
-    border-radius: 5px;
-
-    .header {
-      display: flex;
-      width: 100%;
-      cursor: pointer;
-
-      .info {
-        flex: 0.92;
-
-        .title {
-          @include inner-content();
-          color: white;
-
-          padding-top: 10px;
-          padding-bottom: 10px;
-          font-weight: 500;
-          font-size: 15px;
-          font-family: $issue-font;
-        }
-
-        .author {
-          @include inner-content();
-
-          margin-top: -6px;
-          padding-bottom: 10px;
-
-          font-weight: 400;
-          color: #C6C6C6;
-          font-family: $issue-font;
-          font-size: 12px;
-        }
-      }
-
-      .dropdown-icon {
-        @include non-draggable();
-
-        display: flex;
-        flex: 0.08;
-        align-items: center;
-        justify-content: center;
-
-        .angle-down {
-          height: 40px;
-
-          $rotate-time: .3s;
-          transition: transform $rotate-time ease-in-out;
-          -webkit-transition: -webkit-transform $rotate-time ease-in-out;
-          -ms-transition: -ms-transform $rotate-time ease-in-out;
-
-          &.flipped {
-            transform: rotate(180deg);
-            -webkit-transform: rotate(180deg);
-            -ms-transform: rotate(180deg);
-          }
-        }
-      }
-    }
-
-    .body {
-      @include inner-content();
-
-      width: 100%;
-      padding-top: 10px;
-      padding-bottom: 20px;
-      color: white;
-      font-family: $issue-font;
-      font-size: 15px;
-      white-space: pre-wrap;
-    }
+    height: 1px;
+    background-color: $gray;
+    width: 60%;
+    margin-top: $issue-margin-between;
+    margin-right: auto;
+    margin-left: auto;
   }
 }
