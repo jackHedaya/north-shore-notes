@@ -9,6 +9,7 @@ import ThisWeek from "./pages/this-week/ThisWeek";
 import LastWeek from "./pages/last-week/LastWeek";
 import StudentArt from "./pages/student-art/StudentArt";
 import PreviousIssues from "./pages/previous-issues/PreviousIssues";
+import AddIssue from "./pages/add-issue/AddIssue";
 
 import "./App.scss";
 
@@ -25,6 +26,7 @@ function App() {
             <Route exact path="/previous-issues/" component={PreviousIssues} />
             <Route exact path="/student-art/" component={StudentArt} />
             <Route exact path="/about/" component={About} />
+            <Route exact path="/add-issue/" component={AddIssue} />
           </Switch>
         </div>
       </div>
