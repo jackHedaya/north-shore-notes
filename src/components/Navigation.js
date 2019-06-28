@@ -3,9 +3,6 @@ import { Link, withRouter } from "react-router-dom";
 import "./_styles/Navigation.scss";
 
 export default class Navigation extends React.Component {
-	addShadow() {
-		console.log("scrolled!!!");
-	}
 	render() {
 		return (
 			<ul className={"navigation"}>
