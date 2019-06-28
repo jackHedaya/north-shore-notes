@@ -30,7 +30,7 @@
 
   .new-article {
     font-family: $main-font;
-    margin-bottom: 5%;
+    margin-bottom: 10%;
 
     input {
       display: block;
@@ -74,6 +74,12 @@
     padding: 2px 4px;
     text-align: center;
     margin-top: 10%;
+    margin-bottom: 5%;
     width: 20%;
+
+    &:hover {
+      color: rgb(247, 247, 247);
+      background-color: gray;
+    }
   }
 }
