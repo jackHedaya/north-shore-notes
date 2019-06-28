@@ -4,12 +4,14 @@ import ReactQuill from "react-quill";
 import "./AddIssue.scss";
 
 function AddIssue() {
+  const BLANK_ARTICLE = { title: "", author: "", body: "" };
+
   const [volume, setVolume] = useState(1);
   const [issue, setIssue] = useState(1);
-  const [articles, setArticles] = useState([]);
+  const [articles, setArticles] = useState([BLANK_ARTICLE]);
 
   function addArticle() {
-    setArticles([...articles, { title: "", author: "", body: "" }]);
+    setArticles([...articles, BLANK_ARTICLE]);
   }
 
   function editArticle(index, newData) {
@@ -81,7 +83,6 @@ function ArticleForm(props) {
   const [body, setBody] = useState("");
 
   function updateState() {
-    console.log({ title, author, body })
     props.onChange({ title, author, body });
   }
 
