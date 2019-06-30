@@ -49,6 +49,20 @@
 
     .title {
       font-size: 1.4em;
+      display: inline-block;
+    }
+
+    .delete {
+      display: inline-block;
+      margin-bottom: -0.6%;
+      color: gray;
+      margin-left: 0.5%;
+      font-size: 2em;
+      cursor: pointer;
+
+      &:hover {
+        color: #434343;
+      }
     }
 
     .author {
@@ -76,6 +90,7 @@
     margin-top: 10%;
     margin-bottom: 5%;
     width: 20%;
+    cursor: pointer;
 
     &:hover {
       color: rgb(247, 247, 247);

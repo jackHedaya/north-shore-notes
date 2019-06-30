@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import ReactQuill from "react-quill";
 
+import { GoX } from "react-icons/go"
+
 import "./AddIssue.scss";
 
 function AddIssue() {
@@ -18,6 +20,10 @@ function AddIssue() {
     setArticles([...articles.slice(0, index), newData, ...articles.slice(index + 1)]);
   }
 
+  function deleteArticle(index) {
+    setArticles([...articles.slice(0, index), ...articles.slice(index + 1)]);
+  }
+
   return (
     <div className="add-issue">
       <div className="title">
@@ -31,6 +37,7 @@ function AddIssue() {
           author={author}
           body={body}
           onChange={data => editArticle(index, data)}
+          deleteSelf={_ => deleteArticle(index)}
         />
       ))}
       <AddButton onClick={addArticle} />
@@ -96,6 +103,7 @@ function ArticleForm(props) {
           updateState();
         }}
       />
+      <GoX className="delete" onClick={props.deleteSelf} />
       <input
         className="author"
         placeholder="By"
