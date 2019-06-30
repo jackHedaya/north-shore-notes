@@ -30,7 +30,7 @@
 
   .new-article {
     font-family: $main-font;
-    margin-bottom: 10%;
+    margin-bottom:2%;
 
     input {
       display: block;
@@ -78,7 +78,15 @@
       font-weight: 300;
       font-size: 1em;
       resize: vertical;
+      padding-bottom: 5%;
     }
+  }
+  
+  .break {
+    height: 1px;
+    background-color: $gray;
+    width: 60%;
+    margin-top: 2.5%;
   }
 
   .add-button {
