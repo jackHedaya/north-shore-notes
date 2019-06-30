@@ -1,23 +1,25 @@
 import React, { useState } from "react";
 import ReactQuill from "react-quill";
 
-import { GoX } from "react-icons/go"
+import { GoX } from "react-icons/go";
 
 import "./AddIssue.scss";
 
+const quickId = () => Math.random().toString();
+
 function AddIssue() {
-  const BLANK_ARTICLE = { title: "", author: "", body: "" };
+  const BLANK_ARTICLE = () => ({ title: "", author: "", body: "", id: quickId() });
 
   const [volume, setVolume] = useState(1);
   const [issue, setIssue] = useState(1);
-  const [articles, setArticles] = useState([BLANK_ARTICLE]);
+  const [articles, setArticles] = useState([BLANK_ARTICLE()]);
 
   function addArticle() {
-    setArticles([...articles, BLANK_ARTICLE]);
+    setArticles([...articles, BLANK_ARTICLE()]);
   }
 
   function editArticle(index, newData) {
-    setArticles([...articles.slice(0, index), newData, ...articles.slice(index + 1)]);
+    setArticles([...articles.slice(0, index), { ...newData, id: articles[index].id }, ...articles.slice(index + 1)]);
   }
 
   function deleteArticle(index) {
@@ -30,14 +32,15 @@ function AddIssue() {
         Volume <TitleInput value={volume} onChange={e => setVolume(e.currentTarget.value)} /> Issue{" "}
         <TitleInput value={issue} onChange={e => setIssue(e.currentTarget.value)} />
       </div>
-      {articles.map(({ title, author, body }, index) => (
+      {articles.map(({ title, author, body, id }, index) => (
         <ArticleForm
-          key={index}
+          key={id}
           title={title}
           author={author}
           body={body}
           onChange={data => editArticle(index, data)}
           deleteSelf={_ => deleteArticle(index)}
+          break={index !== articles.length - 1}
         />
       ))}
       <AddButton onClick={addArticle} />
@@ -122,6 +125,7 @@ function ArticleForm(props) {
           updateState();
         }}
       />
+      {props.break ? <div className="break" /> : null}
     </div>
   );
 }
