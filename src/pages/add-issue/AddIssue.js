@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import Scroll from 'react-scrollchor'
+import Scroll from "react-scrollchor";
 import ReactQuill from "react-quill";
 
 import { GoX } from "react-icons/go";
@@ -54,10 +54,13 @@ function AddIssue() {
 
 function Outline(props) {
   return (
-    <div>
-      <div>Outline</div>
+    <div className="outline">
+      <div className="title">Outline</div>
+      <div className="break" />
       {props.articles.map(({ title, id }) => (
-        <Scroll to={`#${id}`} animate={{ offset: -100, duration: 400 }}>{title}</Scroll>
+        <Scroll to={`#${id}`} animate={{ offset: -100, duration: 400 }}>
+          {title}
+        </Scroll>
       ))}
     </div>
   );
@@ -109,15 +112,22 @@ function ArticleForm(props) {
         className="title"
         placeholder="Article Name"
         onChange={e => props.onChange({ title: e.currentTarget.value })}
+        value={props.title}
       />
       <GoX className="delete" onClick={props.deleteSelf} />
-      <input className="author" placeholder="By" onChange={e => props.onChange({ author: e.currentTarget.value })} />
+      <input
+        className="author"
+        placeholder="By"
+        onChange={e => props.onChange({ author: e.currentTarget.value })}
+        value={props.author}
+      />
       <ReactQuill
         className="body"
         placeholder="Article Content"
         formats={quillOptions.formats}
         modules={quillOptions.modules}
         onChange={e => props.onChange({ body: e })}
+        value={props.body}
       />
       {props.break && <div className="break" />}
     </div>
