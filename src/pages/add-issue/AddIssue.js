@@ -19,7 +19,7 @@ function AddIssue() {
   }
 
   function editArticle(index, newData) {
-    setArticles([...articles.slice(0, index), { ...newData, id: articles[index].id }, ...articles.slice(index + 1)]);
+    setArticles([...articles.slice(0, index), { ...articles[index], ...newData }, ...articles.slice(index + 1)]);
   }
 
   function deleteArticle(index) {
@@ -88,42 +88,21 @@ const quillOptions = {
 };
 
 function ArticleForm(props) {
-  const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
-  const [body, setBody] = useState("");
-
-  function updateState() {
-    props.onChange({ title, author, body });
-  }
-
   return (
     <div className="new-article">
       <input
         className="title"
         placeholder="Article Name"
-        onChange={e => {
-          setTitle(e.currentTarget.value);
-          updateState();
-        }}
+        onChange={e => props.onChange({ title: e.currentTarget.value })}
       />
       <GoX className="delete" onClick={props.deleteSelf} />
-      <input
-        className="author"
-        placeholder="By"
-        onChange={e => {
-          setAuthor(e.currentTarget.value);
-          updateState();
-        }}
-      />
+      <input className="author" placeholder="By" onChange={e => props.onChange({ author: e.currentTarget.value })} />
       <ReactQuill
         className="body"
         placeholder="Article Content"
         formats={quillOptions.formats}
         modules={quillOptions.modules}
-        onChange={e => {
-          setBody(e);
-          updateState();
-        }}
+        onChange={e => props.onChange({ body: e })}
       />
       {props.break && <div className="break" />}
     </div>
