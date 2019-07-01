@@ -58,7 +58,7 @@ function Outline(props) {
       <div className="title">Outline</div>
       <div className="break" />
       {props.articles.map(({ title, id }) => (
-        <Scroll to={`#${id}`} animate={{ offset: -100, duration: 400 }}>
+        <Scroll to={`#${id}`} key={`_#${id}`} animate={{ offset: -100, duration: 400 }}>
           {title}
         </Scroll>
       ))}
