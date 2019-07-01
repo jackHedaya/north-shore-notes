@@ -125,7 +125,7 @@ function ArticleForm(props) {
           updateState();
         }}
       />
-      {props.break ? <div className="break" /> : null}
+      {props.break && <div className="break" />}
     </div>
   );
 }
