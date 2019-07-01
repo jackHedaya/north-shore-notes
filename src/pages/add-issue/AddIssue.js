@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+
+import Scroll from 'react-scrollchor'
 import ReactQuill from "react-quill";
 
 import { GoX } from "react-icons/go";
@@ -32,9 +34,11 @@ function AddIssue() {
         Volume <TitleInput value={volume} onChange={e => setVolume(e.currentTarget.value)} /> Issue{" "}
         <TitleInput value={issue} onChange={e => setIssue(e.currentTarget.value)} />
       </div>
+      <Outline articles={articles} />
       {articles.map(({ title, author, body, id }, index) => (
         <ArticleForm
           key={id}
+          id={id}
           title={title}
           author={author}
           body={body}
@@ -44,6 +48,17 @@ function AddIssue() {
         />
       ))}
       <AddButton onClick={addArticle} />
+    </div>
+  );
+}
+
+function Outline(props) {
+  return (
+    <div>
+      <div>Outline</div>
+      {props.articles.map(({ title, id }) => (
+        <Scroll to={`#${id}`} animate={{ offset: -100, duration: 400 }}>{title}</Scroll>
+      ))}
     </div>
   );
 }
@@ -89,7 +104,7 @@ const quillOptions = {
 
 function ArticleForm(props) {
   return (
-    <div className="new-article">
+    <div className="new-article" id={props.id}>
       <input
         className="title"
         placeholder="Article Name"
