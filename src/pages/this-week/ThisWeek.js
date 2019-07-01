@@ -1,5 +1,7 @@
 import React from "react";
 
+import Interweave from "interweave";
+
 import useIssues from "../../hooks/useIssues";
 
 import "./ThisWeek.scss";
@@ -23,7 +25,7 @@ function Issue(props) {
     <div className="issue">
       <div className="title">{title}</div>
       <div className="author">By: {author}</div>
-      <div className="body">{body}</div>
+      <Interweave className="body" content={body}></Interweave>
       {props.break ? <div className="break" /> : null}
     </div>
   );
