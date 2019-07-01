@@ -1,11 +1,44 @@
 @import "../../globals.sass";
 
+@mixin break {
+  height: 1px;
+  background-color: $gray;
+}
+
 .add-issue {
 
   @mixin title-style {
     font-family: 'Helvetica Neue';
     color: #434343;
     font-weight: bold;
+  }
+
+  .outline {
+    position: fixed;
+    left: 5%;
+    top: 25%;
+
+    .title {
+      font-family: $main-font;
+      font-weight: 500;
+      font-size: 1.25em;
+    }
+
+    .break {
+      width: 90%;
+      margin-bottom: 5px;
+    }
+
+    a {
+      display: block;
+      text-decoration: none;
+
+
+      &:visited {
+        text-decoration: none;
+        color: black;
+      }
+    }
   }
 
   .title {
@@ -30,7 +63,7 @@
 
   .new-article {
     font-family: $main-font;
-    margin-bottom:2%;
+    margin-bottom: 2%;
 
     input {
       display: block;
@@ -81,10 +114,10 @@
       padding-bottom: 5%;
     }
   }
-  
+
   .break {
-    height: 1px;
-    background-color: $gray;
+    @include break;
+
     width: 60%;
     margin-top: 2.5%;
   }
