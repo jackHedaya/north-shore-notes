@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 
-export default () => {
+export default ({ volume, issue }) => {
   const [issues, setIssues] = useState([]);
 
   useEffect(() => {
-    fetch("/issue", {})
+    fetch(`/issue?volume=${volume}&issue=${issue}`)
       .then(resp => resp.json())
       .then(body => setIssues(body))
-      .catch(e => console.log(e));
-  }, []);
+      .catch(e => setIssues([]));
+  }, [issue, volume]);
 
   return issues;
 }
