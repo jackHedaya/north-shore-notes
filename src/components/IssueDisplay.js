@@ -6,9 +6,11 @@ import "./_styles/IssueDisplay.scss";
 
 function IssueDisplay(props) {
   const { issue } = props;
+  const anyArticle = issue[0];
 
   return (
     <div>
+      {anyArticle && <div className="volume-issue-title">Volume {anyArticle.volume} Issue {anyArticle.issue}</div>}
       {issue.map(({ title, body, author = "Anonymous" }, index) => (
         <Article title={title} body={body} author={author} key={title} break={index !== issue.length - 1} />
       ))}
