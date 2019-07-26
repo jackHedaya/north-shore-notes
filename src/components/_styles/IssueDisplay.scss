@@ -1,6 +1,12 @@
 @import "../../globals.sass";
 
 $issue-margin-between: 3%;
+
+.volume-issue-title {
+  @include volume-issue-title();
+  padding-bottom: 1.5%;
+}
+
 .issue {
   font-family: $main-font;
   margin-bottom: $issue-margin-between;
