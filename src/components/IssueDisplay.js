@@ -11,8 +11,8 @@ function IssueDisplay(props) {
   return (
     <div>
       {anyArticle && <div className="volume-issue-title">Volume {anyArticle.volume} Issue {anyArticle.issue}</div>}
-      {issue.map(({ title, body, author = "Anonymous" }, index) => (
-        <Article title={title} body={body} author={author} key={title} break={index !== issue.length - 1} />
+      {issue.map(({ title, body, author, _id }, index) => (
+        <Article title={title} body={body} author={author} key={_id} break={index !== issue.length - 1} />
       ))}
     </div>
   );
