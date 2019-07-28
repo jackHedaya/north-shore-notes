@@ -21,7 +21,7 @@ function groupByIssue(articles) {
 		const current = articles[i];
 		const last = articles[i - 1];
 
-		if (current.volume !== last.volume && current.issue !== last.issue) {
+		if (current.volume !== last.volume || current.issue !== last.issue) {
 			out.push([]);
 		}
 
