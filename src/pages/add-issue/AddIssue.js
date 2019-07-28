@@ -28,13 +28,23 @@ function AddIssue() {
     setArticles([...articles.slice(0, index), ...articles.slice(index + 1)]);
   }
 
+  function submitIssue() {
+    fetch("/issue", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({ volume, issue, articles })
+    }).then()
+    .catch(x => console.log(x))
+  }
+
   return (
     <div className="add-issue">
       <div className="title">
-        Volume <TitleInput value={volume} onChange={e => setVolume(e.currentTarget.value)} /> Issue{" "}
-        <TitleInput value={issue} onChange={e => setIssue(e.currentTarget.value)} />
+        Volume <TitleInput value={volume} onChange={e => setVolume(parseInt(e.currentTarget.value))} /> Issue{" "}
+        <TitleInput value={issue} onChange={e => setIssue(parseInt(e.currentTarget.value))} />
       </div>
       <Outline articles={articles} />
+      <Submit send={submitIssue} />
       {articles.map(({ title, author, body, id }, index) => (
         <ArticleForm
           key={id}
@@ -138,6 +148,14 @@ function AddButton(props) {
   return (
     <div className="add-button" {...props}>
       Add Article
+    </div>
+  );
+}
+
+function Submit(props) {
+  return (
+    <div className="submit" onClick={props.send}>
+      Upload
     </div>
   );
 }
