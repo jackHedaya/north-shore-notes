@@ -5,10 +5,10 @@ import Navigation from "./components/Navigation";
 
 // imports for the pages
 import About from "./pages/about/About";
-import ThisWeek from "./pages/this-week/ThisWeek";
-import LastWeek from "./pages/last-week/LastWeek";
+import ThisWeek from "./pages/issue-pages/ThisWeek";
+import LastWeek from "./pages/issue-pages/LastWeek";
 import StudentArt from "./pages/student-art/StudentArt";
-import PreviousIssues from "./pages/previous-issues/PreviousIssues";
+import PreviousIssues from "./pages/issue-pages/PreviousIssues";
 import AddIssue from "./pages/add-issue/AddIssue";
 
 import "./App.scss";
