@@ -1,5 +1,4 @@
 import React from "react";
-import "./PreviousIssues.scss";
 import useIssue from "../../hooks/useIssue";
 import IssueDisplay from "../../components/IssueDisplay";
 
