@@ -16,6 +16,15 @@ function AddIssue() {
   const [issue, setIssue] = useState(1);
   const [articles, setArticles] = useState([BLANK_ARTICLE()]);
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+
+  function showError() {
+    setIsError(true);
+    setTimeout(function() { setIsError(false) }, 3000);
+    console.log(isError)
+  }
+
   function addArticle() {
     setArticles([...articles, BLANK_ARTICLE()]);
   }
@@ -29,13 +38,20 @@ function AddIssue() {
   }
 
   function submitIssue() {
+    setIsLoading(true);
+    setIsError(false);
+
     fetch("/issue", {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
       body: JSON.stringify({ volume, issue, articles })
     })
-      .then()
-      .catch(x => console.log(x));
+      .then(resp => {
+        if (resp.ok) setIsError(false)
+        else showError()
+      })
+      .catch(_ => showError())
+      .finally(_ => setIsLoading(false));
   }
 
   return (
@@ -45,7 +61,7 @@ function AddIssue() {
         <TitleInput value={issue || ""} updateState={x => setIssue(x)} />
       </div>
       <Outline articles={articles} />
-      <Submit send={submitIssue} />
+      <Submit send={submitIssue} loading={isLoading} error={isError} />
       {articles.map(({ title, author, body, id }, index) => (
         <ArticleForm
           key={id}
@@ -157,7 +173,15 @@ function AddButton(props) {
 
 function Submit(props) {
   return (
-    <div className="submit" onClick={props.send}>
+    <div
+      className="submit"
+      onClick={props.send}
+      style={{
+        width: props.loading ? "30px" : undefined,
+        backgroundColor: props.error ? "red" : undefined,
+        textIndent: props.loading ? 30 : undefined
+      }}
+    >
       Upload
     </div>
   );
