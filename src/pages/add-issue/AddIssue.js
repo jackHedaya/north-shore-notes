@@ -31,17 +31,18 @@ function AddIssue() {
   function submitIssue() {
     fetch("/issue", {
       method: "POST",
-      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
       body: JSON.stringify({ volume, issue, articles })
-    }).then()
-    .catch(x => console.log(x))
+    })
+      .then()
+      .catch(x => console.log(x));
   }
 
   return (
     <div className="add-issue">
       <div className="title">
-        Volume <TitleInput value={volume} onChange={e => setVolume(parseInt(e.currentTarget.value))} /> Issue{" "}
-        <TitleInput value={issue} onChange={e => setIssue(parseInt(e.currentTarget.value))} />
+        Volume <TitleInput value={volume || ""} updateState={x => setVolume(x)} /> Issue{" "}
+        <TitleInput value={issue || ""} updateState={x => setIssue(x)} />
       </div>
       <Outline articles={articles} />
       <Submit send={submitIssue} />
@@ -84,7 +85,9 @@ function TitleInput(props) {
         e.value = null;
       }}
       onBlur={({ currentTarget: e }) => (e.value = e.value || e.placeholder)}
-      {...props}
+      onChange={e => props.updateState(!e.currentTarget.value ? null : parseInt(e.currentTarget.value))}
+      onKeyDown={e => (isNaN(parseInt(e.currentTarget.value + e.key)) && e.keyCode !== 8 ? e.preventDefault() : null)}
+      value={props.value}
     />
   );
 }
