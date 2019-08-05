@@ -17,11 +17,7 @@
     "react-scrollchor": "^6.0.0"
   },
   "scripts": {
-    "start": "yarn run client & yarn run server",
-    "client": "react-scripts start",
-    "server": "nodemon --watch server --no-deprecation server/src/index.js",
-    "seed": "node --no-deprecation ./server/src/db/seeds/seed_all.js",
-    "wipe": "mongo north-shore-notes --eval 'db.dropDatabase();'",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
