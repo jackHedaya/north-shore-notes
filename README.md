@@ -1,6 +1,8 @@
 # North Shore Notes
 
-The official source code for both the North Shore Notes client and server.
+The official source code for the North Shore Notes client.
+
+The North Shore Notes API can be found <a href="https://github.com/jackHedaya/nsn_api">here</a>.
 
 ## Getting Started
 
@@ -8,7 +10,6 @@ The official source code for both the North Shore Notes client and server.
 
 Before contributing, make sure the following is installed.
 
-+ MongoDB
 + Yarn
 + Postman
 
@@ -17,12 +18,9 @@ Before contributing, make sure the following is installed.
 #### Postman
 - Navigate to the <a href="https://app.getpostman.com/join-team?invite_code=6ddaef024f1cd742a90075c87a8121d9&ws=71f857c4-d081-48de-bef6-61fa626de526">Postman North Shore Notes Team</a> and join.
 
-#### Client + Server
+#### Running
 - `$ git clone https://github.com/jackHedaya/north-shore-notes`
 - `$ cd north-shore-notes && yarn`
-
-#### MongoDB
-- To seed the database, run `$ yarn run seed`.
 
 ## Deploying
 
