@@ -2,10 +2,9 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import "./_styles/Navigation.scss";
 
-export default class Navigation extends React.Component {
-	render() {
+function Navigation() {
 		return (
-			<ul className={"navigation"}>
+			<ul className="navigation">
 				<Link to="/" className="navItem">
 					NSN
 				</Link>
@@ -22,7 +21,6 @@ export default class Navigation extends React.Component {
 				</div>
 			</ul>
 		);
-	}
 }
 
 const NavLink = withRouter((props) => {
@@ -36,3 +34,5 @@ const NavLink = withRouter((props) => {
 		</li>
 	);
 });
+
+export default Navigation;
