@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { Redirect } from "react-router-dom";
 import Loader from "react-loader-spinner";
 
-import AuthContext from "../../Context";
+import { AuthContext } from "../../App"
 
 import * as authenticationService from "../../services/authentication.service";
 
@@ -10,8 +10,8 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import "./Login.scss";
 
 function Login(props) {
-  const { setToken, isLoggedIn, setLoggedIn } = useContext(AuthContext);
-
+  const { isLoggedIn, setIsLoggedIn, setToken } = useContext(AuthContext)
+  
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -22,18 +22,17 @@ function Login(props) {
     setIsLoading(true);
     authenticationService
       .login(username, password)
-      .then(resp => {
-        setToken(resp.data.jwt);
-        setLoggedIn(true);
+      .then(data => {
+        setToken(data.jwt)
+        setIsLoggedIn(true)
       })
       .catch(_ => {
         setIsInvalid(true);
         setTimeout(() => setIsInvalid(false), 3000);
       })
-      .finally(_ => setIsLoading(false));
   }
 
-  return isLoggedIn ? (
+  return isLoggedIn ? ( // logged in
     <Redirect to={props.location.state ? props.location.state.from.pathname : "/"} />
   ) : isLoading ? (
     <Loader type="CradleLoader" color="#78E88E" width="100" height="100" />
