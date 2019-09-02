@@ -47,7 +47,7 @@
       border: none;
       font-size: 100%;
       width: 1.25em;
-      
+
 
       &:focus {
         color: gray;
@@ -119,23 +119,11 @@
   }
 
   .submit {
-    font-family: Arial, Helvetica, sans-serif;
-    text-transform: uppercase;
+    @include app-button;
+
     position: fixed;
     right: 8%;
     bottom: 50px;
-    color: white;
-    background-color: $light-green;
-    width: 110px;
-    text-align: center;
-    height: 30px;
-    border-radius: 100px;
-    line-height: 30px;
-    cursor: pointer;
-
-    &:hover {
-      background-color: $dark-green;
-    }
   }
 
   .add-button {

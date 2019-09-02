@@ -1,0 +1,53 @@
+@import "../../globals.sass";
+
+.login {
+  text-align: center;
+  margin-left: -250px;
+  margin-right: -5%;
+
+  .inputs {
+    display: inline-block;
+    width: 25vw;
+    min-width: 200px;
+    max-width: 500px;
+    height: 5vh;
+    min-height: 20px;
+    max-height: 25px;
+
+    .name {
+      font-family: "Helvetica Neue";
+      color: gray;
+      font-size: 0.9em;
+      text-align: left;
+      font-style: italic;
+    }
+
+    input {
+      font-size: 1em;
+      font-weight: 450;
+      display: block;
+      width: 100%;
+      height: 100%;
+      margin-bottom: 18px;
+      border-radius: 5px;
+      border: 1px solid black;
+      padding: 3px 6px;
+
+      &:focus {
+        outline: none;
+        -webkit-box-shadow: 0 0 1pt 1.5px $light-green;
+        -moz-box-shadow: 0 0 1pt 1.5px $light-green;
+        box-shadow: 0 0 1pt 1.5px $light-green;
+      }
+    }
+  }
+
+  .submit {
+    @include app-button;
+
+    margin-top: 20px;
+    display: inline-block;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
