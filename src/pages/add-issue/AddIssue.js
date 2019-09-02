@@ -22,7 +22,6 @@ function AddIssue() {
   function showError() {
     setIsError(true);
     setTimeout(function() { setIsError(false) }, 3000);
-    console.log(isError)
   }
 
   function addArticle() {
@@ -175,7 +174,7 @@ function Submit(props) {
   return (
     <div
       className="submit"
-      onClick={props.send}
+      onClick={!props.loading && props.send}
       style={{
         width: props.loading ? "30px" : undefined,
         backgroundColor: props.error ? "red" : undefined,
