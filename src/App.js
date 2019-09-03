@@ -48,7 +48,6 @@ function App() {
               <Route exact path="/about/" component={About} />
               <Route exact path="/add-issue/" component={AddIssue} />
               <Route exact path="/login/" component={Login} />
-              <SecuredRoute exact path="/test" authenticated={isLoggedIn} component={ThisWeek} />
             </Switch>
           </div>
         </div>
