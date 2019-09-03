@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Scroll from "react-scrollchor";
 import ReactQuill from "react-quill";
 
-import { GoX } from "react-icons/go";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 import "./AddIssue.scss";
 
@@ -145,7 +145,7 @@ function ArticleForm(props) {
         value={props.title}
       />
       <div className="delete-wrapper">
-        <GoX className="delete" onClick={props.deleteSelf} />
+        <DeleteIcon className="delete" onClick={props.deleteSelf} />
       </div>
       <input
         className="author"
