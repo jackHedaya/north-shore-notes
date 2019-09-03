@@ -25,10 +25,7 @@ function Navigation(props) {
           <NavLink to="/previous-issues/">PREVIOUS ISSUES</NavLink>
           <NavLink to="/last-week/">LAST WEEK</NavLink>
           <NavLink to="/this-week/">THIS WEEK</NavLink>
-          <NavLink to="/this-week/">THIS WEEK</NavLink>
-          {isLoggedIn && user && (
-            <CustomDropdown name={user.first_name} redirectToHome={() => props.history.push("/")} />
-          )}
+          {isLoggedIn && user && <CustomDropdown name={user.first_name} redirect={props.history.push} />}
         </div>
       </div>
     </ul>
@@ -56,8 +53,10 @@ function CustomDropdown(props) {
   const signOut = () => {
     setToken(null);
     setIsLoggedIn(false);
-    props.redirectToHome();
+    props.redirect("/");
   };
+
+  const DropdownLink = ({ to, ...other }) => <DropdownItem onClick={() => props.redirect(to)} {...other} />;
 
   return (
     <Dropdown isOpen={open} toggle={toggle} nav>
@@ -66,7 +65,9 @@ function CustomDropdown(props) {
       </DropdownToggle>
       <DropdownMenu right>
         <DropdownItem header>Admin</DropdownItem>
-        <DropdownItem>Manage Users</DropdownItem>
+        <DropdownLink to="/manage-users">Manage Users</DropdownLink>
+        <DropdownItem header>Editor</DropdownItem>
+        <DropdownLink to="/add-issue">Add Issue</DropdownLink>
         <DropdownItem divider>Admin</DropdownItem>
         <DropdownItem onClick={signOut}>Log Out</DropdownItem>
       </DropdownMenu>
