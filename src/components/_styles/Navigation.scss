@@ -1,57 +1,74 @@
 @import "../../globals.sass";
+@import "~bootstrap/dist/css/bootstrap.min.css";
 
 .navigation {
-	list-style-type: none;
-	position: fixed;
-	margin: 0;
-	padding: 0;
-	width: 100%;
-	box-shadow: 0px 0px 2px 2px lightgray;
-	background-color: white;
-	height: 85px;
-	z-index: 1000;
+  list-style-type: none;
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  box-shadow: 0px 0px 2px 2px lightgray;
+  background-color: white;
+  height: 85px;
+  z-index: 1000;
 
-	li {
-		display: inline;
-		font-family: "Rubik", "Open Sans", Arial, Helvetica, sans-serif;
-	}
+  li {
+    display: inline;
+    font-family: "Rubik", "Open Sans", Arial, Helvetica, sans-serif;
+  }
 
-	a:hover {
-		color: $dark-green;
-	}
+  a:hover {
+    color: $dark-green;
+  }
 
-	.tabsContainer {
-		flex-direction: row;
-		flex: 1;
-		justify-content: center;
-		align-content: center;
-	}
+  .tabsContainer {
+    flex-direction: row;
+    flex: 1;
+    justify-content: center;
+    align-content: center;
+  }
 
-	.navItem {
-		font-weight: bold;
-		float: left;
-		margin-top: 15px;
-		margin-left: 18px;
-		font-size: 3.12em;
-		color: $dark-green;
-		font-family: "Rubik", Arial, Helvetica, sans-serif;
-	}
+  .nsn {
+    font-weight: bold;
+    float: left;
+    margin-top: 15px;
+    margin-left: 18px;
+    font-size: 3.12em;
+    color: $dark-green;
+    font-family: "Rubik", Arial, Helvetica, sans-serif;
+  }
 
-	.other-tabs {
-		justify-content: flex-start;
-		margin-top: 35px;
-		float: left;
-	}
+  .other-tabs {
+    justify-content: flex-start;
+    margin-top: 35px;
+    float: left;
+  }
 
-	.article-tabs {
-		justify-content: flex-end;
-		margin-top: 35px;
-		float: right;
-	}
+  .article-tabs {
+    justify-content: flex-end;
+    margin-top: 35px;
+    float: right;
+  }
 
-	a {
-		text-decoration: none;
-		color: $light-green;
-		margin-right: 50px;
-	}
+  a {
+    text-decoration: none;
+    color: $light-green;
+    margin-right: 50px;
+
+    &:hover { text-decoration: none; }
+  }
+
+  .greeting {
+    cursor: pointer;
+
+    &.btn-secondary,
+    &.dropdown-toggle,
+    &.btn {
+      @include counter-bootstrap();
+
+      margin-right: 50px;
+      margin-left: 10px;
+      background: none !important;
+    }
+  }
 }
