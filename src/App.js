@@ -33,7 +33,7 @@ function App() {
         }}
       />
       <Router>
-        <div className="container">
+        <div className="app-container">
           <Navigation />
           <div className="content">
             <Switch>

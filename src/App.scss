@@ -1,17 +1,17 @@
 $navigation_width: 250px;
 
 body {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .content {
-	margin-left: $navigation_width;
-	margin-top: 100px;
-	margin-right: 5%;
+  margin-left: $navigation_width;
+  margin-top: 100px;
+  margin-right: 5%;
 }
 
-.container {
-	flex-direction: column;
-	display: flex;
+.app-container {
+  flex-direction: column;
+  display: flex;
 }
