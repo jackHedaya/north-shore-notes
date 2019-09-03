@@ -102,7 +102,7 @@
 
     .body {
       width: 80%;
-      height: 30vh;
+      height: 50vh;
       min-height: 150px;
       font-weight: 300;
       font-size: 1em;
@@ -124,7 +124,7 @@
     position: fixed;
     right: 8%;
     bottom: 50px;
-  }
+    z-index: 100;  }
 
   .add-button {
     align-self: center;
