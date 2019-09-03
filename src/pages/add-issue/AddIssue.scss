@@ -81,16 +81,20 @@
       display: inline-block;
     }
 
-    .delete {
+    .delete-wrapper {
       display: inline-block;
-      margin-bottom: -0.6%;
-      color: gray;
-      margin-left: 0.5%;
-      font-size: 2em;
-      cursor: pointer;
+      height: 1.4em;
 
-      &:hover {
-        color: #434343;
+      .delete {
+        position: absolute;
+        margin-left: 10px;
+        color: gray;
+        font-size: 2em;
+        cursor: pointer;
+
+        &:hover {
+          color: #434343;
+        }
       }
     }
 
@@ -124,7 +128,8 @@
     position: fixed;
     right: 8%;
     bottom: 50px;
-    z-index: 100;  }
+    z-index: 100;
+  }
 
   .add-button {
     align-self: center;
