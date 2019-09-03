@@ -32,7 +32,7 @@ function Login(props) {
       })
   }
 
-  return isLoggedIn ? ( // logged in
+  return isLoggedIn ? (
     <Redirect to={props.location.state ? props.location.state.from.pathname : "/"} />
   ) : isLoading ? (
     <Loader type="CradleLoader" color="#78E88E" width="100" height="100" />
