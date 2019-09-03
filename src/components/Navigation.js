@@ -1,13 +1,13 @@
 import React, { useState, useContext } from "react";
 import { Link, withRouter } from "react-router-dom";
-import { Dropdown, DropdownHeader, DropdownMenu, DropdownToggle, DropdownItem } from "reactstrap";
+import { Dropdown, DropdownMenu, DropdownToggle, DropdownItem } from "reactstrap";
 
 import { AuthContext } from "../App";
 import useUser from "../hooks/useUser";
 
 import "./_styles/Navigation.scss";
 
-function Navigation() {
+function Navigation(props) {
   const { isLoggedIn, token } = useContext(AuthContext);
   const user = useUser(token);
 
@@ -26,7 +26,9 @@ function Navigation() {
           <NavLink to="/last-week/">LAST WEEK</NavLink>
           <NavLink to="/this-week/">THIS WEEK</NavLink>
           <NavLink to="/this-week/">THIS WEEK</NavLink>
-          {isLoggedIn && user && <CustomDropdown name={user.first_name} />}
+          {isLoggedIn && user && (
+            <CustomDropdown name={user.first_name} redirectToHome={() => props.history.push("/")} />
+          )}
         </div>
       </div>
     </ul>
@@ -47,17 +49,29 @@ const NavLink = withRouter(props => {
 
 function CustomDropdown(props) {
   const [open, setOpen] = useState(false);
+  const { setIsLoggedIn, setToken } = useContext(AuthContext);
+
   const toggle = () => setOpen(!open);
+
+  const signOut = () => {
+    setToken(null);
+    setIsLoggedIn(false);
+    props.redirectToHome();
+  };
 
   return (
     <Dropdown isOpen={open} toggle={toggle} nav>
-      <DropdownToggle caret className="greeting">HELLO, {props.name.toUpperCase()}</DropdownToggle>
+      <DropdownToggle caret className="greeting">
+        HELLO, {props.name.toUpperCase()}
+      </DropdownToggle>
       <DropdownMenu right>
+        <DropdownItem header>Admin</DropdownItem>
         <DropdownItem>Manage Users</DropdownItem>
-        <DropdownItem>Log Out</DropdownItem>
+        <DropdownItem divider>Admin</DropdownItem>
+        <DropdownItem onClick={signOut}>Log Out</DropdownItem>
       </DropdownMenu>
     </Dropdown>
   );
 }
 
-export default Navigation;
+export default withRouter(Navigation);

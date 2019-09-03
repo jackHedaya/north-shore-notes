@@ -15,6 +15,9 @@ import Login from "./pages/login/Login";
 
 import "./App.scss";
 
+/**
+ * @type {React.Context<{ isLoggedIn: boolean, token: string, setIsLoggedIn: () => void, setToken: () => void }>}
+ */
 const AuthContext = React.createContext();
 
 function App() {
