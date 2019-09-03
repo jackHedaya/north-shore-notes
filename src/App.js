@@ -46,7 +46,7 @@ function App() {
               <Route exact path="/previous-issues/" component={PreviousIssues} />
               <Route exact path="/student-art/" component={StudentArt} />
               <Route exact path="/about/" component={About} />
-              <Route exact path="/add-issue/" component={AddIssue} />
+              <SecuredRoute exact path="/add-issue/" component={AddIssue} />
               <Route exact path="/login/" component={Login} />
             </Switch>
           </div>
