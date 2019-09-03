@@ -7,7 +7,7 @@ export default ({ volume, issue }) => {
     fetch(`/issue?volume=${volume}&issue=${issue}`)
       .then(resp => resp.json())
       .then(body => setIssues(body))
-      .catch(e => setIssues([]));
+      .catch(_ => setIssues([]));
   }, [issue, volume]);
 
   return issues;
