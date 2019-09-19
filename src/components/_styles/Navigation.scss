@@ -13,7 +13,6 @@
 	li {
 		display: inline-block;
 		font-family: "Yanone Kaffeesatz", "Open Sans", Arial, Helvetica, sans-serif;
-		margin-bottom: 50px;
 	}
 
 	a:hover {
@@ -50,6 +49,7 @@
 	}
 
 	a {
+		letter-spacing: 0.04em;
 		text-decoration: none;
 		font-size: 20px;
 		color: white;
