@@ -17,7 +17,7 @@
     white-space: nowrap;
 
     .title {
-      font-family: $main-font;
+      font-family: $title-font;
       font-weight: 500;
       font-size: 1.25em;
     }
@@ -58,7 +58,7 @@
 
 
   .new-article {
-    font-family: $main-font;
+    font-family: $title-font;
     margin-bottom: 2%;
 
     input {
