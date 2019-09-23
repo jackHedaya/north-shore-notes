@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { Redirect } from "react-router-dom";
 import Loader from "react-loader-spinner";
 
-import { AuthContext } from "../../App"
+import { AuthContext } from "../../App";
 
 import * as authenticationService from "../../services/authentication.service";
 
@@ -10,8 +10,8 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import "./Login.scss";
 
 function Login(props) {
-  const { isLoggedIn, setIsLoggedIn, setToken } = useContext(AuthContext)
-  
+  const { isLoggedIn, setIsLoggedIn, setToken } = useContext(AuthContext);
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -23,19 +23,23 @@ function Login(props) {
     authenticationService
       .login(username, password)
       .then(data => {
-        setToken(data.jwt)
-        setIsLoggedIn(true)
+        setToken(data.jwt);
+        setIsLoggedIn(true);
       })
       .catch(_ => {
         setIsInvalid(true);
         setTimeout(() => setIsInvalid(false), 3000);
-      })
+      });
   }
 
-  return isLoggedIn ? ( // logged in
+  return isLoggedIn ? (
     <Redirect to={props.location.state ? props.location.state.from.pathname : "/"} />
   ) : isLoading ? (
-    <Loader type="CradleLoader" color="#78E88E" width="100" height="100" />
+    <Loader
+      type="CradleLoader"
+      color="#78E88E"
+      style={{ position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}
+    />
   ) : (
     <div className="login">
       <div className="volume-issue-title">Login</div>

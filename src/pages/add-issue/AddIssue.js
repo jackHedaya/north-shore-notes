@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Scroll from "react-scrollchor";
 import ReactQuill from "react-quill";
 
-import { GoX } from "react-icons/go";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 import "./AddIssue.scss";
 
@@ -21,7 +21,9 @@ function AddIssue() {
 
   function showError() {
     setIsError(true);
-    setTimeout(function() { setIsError(false) }, 3000);
+    setTimeout(function() {
+      setIsError(false);
+    }, 3000);
   }
 
   function addArticle() {
@@ -46,8 +48,8 @@ function AddIssue() {
       body: JSON.stringify({ volume, issue, articles })
     })
       .then(resp => {
-        if (resp.ok) setIsError(false)
-        else showError()
+        if (resp.ok) setIsError(false);
+        else showError();
       })
       .catch(_ => showError())
       .finally(_ => setIsLoading(false));
@@ -142,7 +144,9 @@ function ArticleForm(props) {
         onChange={e => props.onChange({ title: e.currentTarget.value })}
         value={props.title}
       />
-      <GoX className="delete" onClick={props.deleteSelf} />
+      <div className="delete-wrapper">
+        <DeleteIcon className="delete" onClick={props.deleteSelf} />
+      </div>
       <input
         className="author"
         placeholder="By"

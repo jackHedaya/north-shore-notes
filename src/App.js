@@ -12,9 +12,13 @@ import StudentArt from "./pages/student-art/StudentArt";
 import PreviousIssues from "./pages/issue-pages/PreviousIssues";
 import AddIssue from "./pages/add-issue/AddIssue";
 import Login from "./pages/login/Login";
+import ManageUsers from "./pages/manage-users/ManageUsers";
 
 import "./App.scss";
 
+/**
+ * @type {React.Context<{ isLoggedIn: boolean, token: string, setIsLoggedIn: () => void, setToken: () => void }>}
+ */
 const AuthContext = React.createContext();
 
 function App() {
@@ -33,7 +37,7 @@ function App() {
         }}
       />
       <Router>
-        <div className="container">
+        <div className="app-container">
           <Navigation />
           <div className="content">
             <Switch>
@@ -43,9 +47,9 @@ function App() {
               <Route exact path="/previous-issues/" component={PreviousIssues} />
               <Route exact path="/student-art/" component={StudentArt} />
               <Route exact path="/about/" component={About} />
-              <Route exact path="/add-issue/" component={AddIssue} />
+              <SecuredRoute exact path="/add-issue/" component={AddIssue} authenticated={isLoggedIn} />
               <Route exact path="/login/" component={Login} />
-              <SecuredRoute exact path="/test" authenticated={isLoggedIn} component={ThisWeek} />
+              <Route exact path="/manage-users/" component={ManageUsers} />
             </Switch>
           </div>
         </div>
