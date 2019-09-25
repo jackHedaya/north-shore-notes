@@ -1,6 +1,11 @@
 import React, { useState, useContext } from "react";
 import { Link, withRouter } from "react-router-dom";
-import { Dropdown, DropdownMenu, DropdownToggle, DropdownItem } from "reactstrap";
+import {
+  Dropdown,
+  DropdownMenu,
+  DropdownToggle,
+  DropdownItem
+} from "reactstrap";
 
 import { AuthContext } from "../App";
 import useUser from "../hooks/useUser";
@@ -25,7 +30,12 @@ function Navigation(props) {
           <NavLink to="/previous-issues/">PREVIOUS ISSUES</NavLink>
           <NavLink to="/last-week/">LAST WEEK</NavLink>
           <NavLink to="/this-week/">THIS WEEK</NavLink>
-          {isLoggedIn && user && <CustomDropdown name={user.first_name} redirect={props.history.push} />}
+          {isLoggedIn && user && (
+            <CustomDropdown
+              name={user.first_name}
+              redirect={props.history.push}
+            />
+          )}
         </div>
       </div>
     </ul>
@@ -56,7 +66,9 @@ function CustomDropdown(props) {
     props.redirect("/");
   };
 
-  const DropdownLink = ({ to, ...other }) => <DropdownItem onClick={() => props.redirect(to)} {...other} />;
+  const DropdownLink = ({ to, ...other }) => (
+    <DropdownItem onClick={() => props.redirect(to)} {...other} />
+  );
 
   return (
     <Dropdown isOpen={open} toggle={toggle} nav>
