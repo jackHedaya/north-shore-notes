@@ -1,17 +1,12 @@
-// @import "./globals.sass";
-
 body {
   margin: 0;
   padding: 0;
 }
-
 .content {
-  // margin-left: $navigation_width;
   margin-top: 100px;
   margin-right: 5%;
 }
-
-.app-container {
+.container {
   flex-direction: column;
   display: flex;
 }
