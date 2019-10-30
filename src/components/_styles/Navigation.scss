@@ -1,67 +1,87 @@
 @import "../../globals.sass";
 
 .navigation {
-	list-style-type: none;
-	position: fixed;
-	margin: 0;
-	padding: 0;
-	width: 100%;
-	box-shadow: 0px 0px 2px 2px lightgray;
-	background-color: $dark-green;
-	height: 90px;
+  list-style-type: none;
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  box-shadow: 0px 0px 2px 2px lightgray;
+  background-color: $dark-green;
+  height: 90px;
 
-	li {
-		display: inline-block;
-		font-family: "Yanone Kaffeesatz", "Open Sans", Arial, Helvetica, sans-serif;
-	}
+  #logo {
+    transition: all 0.3s ease-in-out 0s;
+    margin-top: 10px;
+    height: 70px;
+    width: 70px;
+  }
 
-	a:hover {
-		color: $gray;
-	}
+  #logo:hover {
+    cursor: pointer;
+    transform: rotate(360deg);
+    transition: all .7s ease-in-out 0s;
+  }
 
-	.tabsContainer {
-		flex-direction: row;
-		flex: 1;
-		justify-content: center;
-		align-content: center;
-	}
+  #logo_text {
+    margin-left: 15px;
+    margin-bottom: 10px;
+    height: 55px;
+    width: 85px;
+  }
 
-	.navItem {
-		font-weight: bold;
-		float: left;
-		line-height: 90px;
-		margin-left: 18px;
-		font-size: 3.12em;
-		color: white;
-		font-family: "Rubik", Arial, Helvetica, sans-serif;
-	}
+  li {
+    display: inline-block;
+    font-family: "Yanone Kaffeesatz", "Open Sans", Arial, Helvetica, sans-serif;
+  }
 
-	.other-tabs {
-		justify-content: flex-start;
-		margin-top: 35px;
-		float: left;
-	}
+  a:hover {
+    color: $gray;
+  }
 
-	.article-tabs {
-		justify-content: flex-end;
-		margin-top: 35px;
-		float: right;
-	}
+  .tabsContainer {
+    flex-direction: row;
+    flex: 1;
+    justify-content: center;
+    align-content: center;
+  }
 
-	a {
-		letter-spacing: 0.04em;
-		text-decoration: none;
-		font-size: 20px;
-		color: white;
-		margin-right: 50px;
-	}
+  .navItem {
+    font-weight: bold;
+    float: left;
+    line-height: 90px;
+    margin-left: 18px;
+    font-size: 3.12em;
+    color: white;
+    font-family: "Rubik", Arial, Helvetica, sans-serif;
+  }
 
-	.selected {
-		padding: 7px 15px 7px 15px;
-		border-radius: 30px;
-		border-color: white;
-		border-width: 30px;
-		background-color: white;
-		color: $light-green;
-	}
-}	
+  .other-tabs {
+    justify-content: flex-start;
+    margin-top: 35px;
+    float: left;
+  }
+
+  .article-tabs {
+    justify-content: flex-end;
+    margin-top: 35px;
+    float: right;
+  }
+
+  a {
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    margin-right: 50px;
+  }
+
+  .selected {
+    padding: 7px 15px 7px 15px;
+    border-radius: 30px;
+    border-color: white;
+    border-width: 30px;
+    background-color: white;
+    color: $light-green;
+  }
+}
