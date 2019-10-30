@@ -2,11 +2,15 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import "./_styles/Navigation.scss";
 
+import NSN_Logo from "../assets/NSN_Logo.png";
+import NSN_Logo_Text from "../assets/NSN_Logo_Text.png";
+
 function Navigation() {
   return (
     <ul className="navigation">
       <Link to="/" className="navItem">
-        NSN
+        <img src={NSN_Logo} className="logo" id="logo" />
+        <img src={NSN_Logo_Text} className="logo" id="logo_text" />
       </Link>
       <div className="tabs-container">
         <div className="other-tabs">
