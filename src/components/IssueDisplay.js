@@ -28,6 +28,7 @@ function IssueDisplay(props) {
         <div className="divider" />
         {issue.map(({ title, id }) => (
           <Scrollchor
+            key={id}
             to={`#${title.replace(/\s/g, "")}`}
             animate={{ offset: -100, duration: 500 }}
           >
