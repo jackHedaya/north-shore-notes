@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
 import {
   Dropdown,
@@ -10,16 +10,46 @@ import {
 import { AuthContext } from "../App";
 import useUser from "../hooks/useUser";
 
+import NSN_Logo from "../assets/NSN_Logo.png";
+import NSN_Logo_Text from "../assets/NSN_Logo_Text.png";
 import "./_styles/Navigation.scss";
 
 function Navigation(props) {
+
   const { isLoggedIn, token } = useContext(AuthContext);
   const user = useUser(token);
 
+  useEffect(() => {
+    window.addEventListener("scroll", resizeHeaderOnScroll);
+  }, []);
+
+  const resizeHeaderOnScroll = () => {
+    const distanceY = window.pageYOffset || document.documentElement.scrollTop,
+      shrinkOn = 200,
+      navBar = document.getElementById("navBar");
+
+      if (distanceY > shrinkOn) {
+        navBar.classList.add("resizeNavBar");
+      } else {
+        navBar.classList.remove("resizeNavBar");
+      }
+  };
+
   return (
-    <ul className="navigation">
-      <Link to="/" className="nsn">
-        NSN
+    <ul className="navigation" id="navBar">
+      <Link to="/" className="logo">
+        <img
+          src={NSN_Logo}
+          className="logo"
+          id="logo"
+          alt="North Shore Hebrew Academy High School"
+        />
+        <img
+          src={NSN_Logo_Text}
+          className="logo"
+          id="logo_text"
+          alt="North Shore Notes"
+        />
       </Link>
       <div className="tabs-container">
         <div className="other-tabs">
