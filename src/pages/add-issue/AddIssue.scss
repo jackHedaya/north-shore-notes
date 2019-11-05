@@ -81,16 +81,20 @@
       display: inline-block;
     }
 
-    .delete {
+    .delete-wrapper {
       display: inline-block;
-      margin-bottom: -0.6%;
-      color: gray;
-      margin-left: 0.5%;
-      font-size: 2em;
-      cursor: pointer;
+      height: 1.4em;
 
-      &:hover {
-        color: #434343;
+      .delete {
+        position: absolute;
+        margin-left: 10px;
+        color: gray;
+        font-size: 2em;
+        cursor: pointer;
+
+        &:hover {
+          color: #434343;
+        }
       }
     }
 
@@ -102,7 +106,7 @@
 
     .body {
       width: 80%;
-      height: 30vh;
+      height: 50vh;
       min-height: 150px;
       font-weight: 300;
       font-size: 1em;
@@ -124,6 +128,7 @@
     position: fixed;
     right: 8%;
     bottom: 50px;
+    z-index: 100;
   }
 
   .add-button {

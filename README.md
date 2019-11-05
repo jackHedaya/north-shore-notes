@@ -1,4 +1,6 @@
 # North Shore Notes
+![https://github.com/jackHedaya/north-shore-notes/workflows/Builds%20and%20Renders/badge.svg](https://github.com/jackHedaya/north-shore-notes/workflows/Builds%20and%20Renders/badge.svg)
+
 
 The official source code for the North Shore Notes client.
 
