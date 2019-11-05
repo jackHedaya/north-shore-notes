@@ -6735,10 +6735,10 @@ internal-ip@^4.2.0:
     default-gateway "^4.2.0"
     ipaddr.js "^1.9.0"
 
-interweave@^12.0.0:
-  version "12.0.0"
-  resolved "https://registry.yarnpkg.com/interweave/-/interweave-12.0.0.tgz#979db9cbb47818d2d0d261e9bf414bac23d1e298"
-  integrity sha512-dTdsi/SelaErA9Z8gxQKkB3MTYh5rI3i3/cqSs7bAn4ieVcBX8+cNUM3+Wx77B3KuLR6hyqetuPPaYRdY4shjw==
+interweave@^12.1.0:
+  version "12.1.0"
+  resolved "https://registry.yarnpkg.com/interweave/-/interweave-12.1.0.tgz#086d87523c3f9c57a01b7ff183a89b9a817f44cb"
+  integrity sha512-+l0GzUgb5Yn4QAG75VtffhUQR58swg093EaplLNznq4V4xKBDgVi8xHGoCwaeeQjU650A6/Lx5F0dZ9nLptHNw==
   dependencies:
     "@types/react" "*"
     escape-html "^1.0.3"
