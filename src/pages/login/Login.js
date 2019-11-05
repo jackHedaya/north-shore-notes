@@ -1,8 +1,8 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import Loader from "react-loader-spinner";
 
-import { AuthContext } from "../../App";
+import useAuth from "../../hooks/useAuth";
 
 import * as authenticationService from "../../services/authentication.service";
 
@@ -10,7 +10,7 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import "./Login.scss";
 
 function Login(props) {
-  const { isLoggedIn, setIsLoggedIn, setToken } = useContext(AuthContext);
+  const { isLoggedIn, setIsLoggedIn, setToken } = useAuth();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -26,7 +26,8 @@ function Login(props) {
         setToken(data.jwt);
         setIsLoggedIn(true);
       })
-      .catch(_ => {
+      .catch(e => {
+        setIsLoading(false);
         setIsInvalid(true);
         setTimeout(() => setIsInvalid(false), 3000);
       });

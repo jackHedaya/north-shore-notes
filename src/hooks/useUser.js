@@ -1,16 +1,25 @@
 import { useState, useEffect } from "react";
 
-export default (token, qUser) => {
+import { getUser, getMe } from "../services/user.service";
+import useAuth from "./useAuth";
+
+/**
+ * 
+ * @param {string} u user_id, "ME" or "ALL"
+ */
+export default function useUser(u) {
+  const { token } = useAuth() || {};
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    if (!token) return undefined;
+    if (!token) return
 
-    fetch(`/user?${qUser ? "user=" + qUser : ""}`, { headers: { Authorization: `Bearer ${token}` } })
-      .then(resp => resp.json())
-      .then(body => setUser(body))
+    const userData = u === "ME" ? getMe(token) : getUser(u, { token });
+ 
+    userData
+      .then(res => setUser(res))
       .catch(_ => setUser(null));
-  }, [token, qUser]);
+  }, [u, token]);
 
   return user;
-};
+}

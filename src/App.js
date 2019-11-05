@@ -14,6 +14,9 @@ import AddIssue from "./pages/add-issue/AddIssue";
 import Login from "./pages/login/Login";
 import ManageUsers from "./pages/manage-users/ManageUsers";
 
+import useUser from "./hooks/useUser";
+import useAuth from "./hooks/useAuth";
+
 import "./App.scss";
 
 /**
@@ -25,6 +28,8 @@ function App() {
   const [token, setToken] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState("");
 
+  const user = useUser("ME");
+  console.log(user)
   return (
     <AuthContext.Provider value={{ token, setToken, isLoggedIn, setIsLoggedIn }}>
       <Persist
@@ -49,7 +54,12 @@ function App() {
               <Route exact path="/about/" component={About} />
               <SecuredRoute exact path="/add-issue/" component={AddIssue} authenticated={isLoggedIn} />
               <Route exact path="/login/" component={Login} />
-              <Route exact path="/manage-users/" component={ManageUsers} />
+              <SecuredRoute
+                exact
+                path="/manage-users/"
+                component={ManageUsers}
+                authenticated={isLoggedIn && user && user.role === "ADMIN"}
+              />
             </Switch>
           </div>
         </div>
@@ -59,6 +69,8 @@ function App() {
 }
 
 function SecuredRoute({ component: Component, authenticated, ...rest }) {
+  const { isLoggedIn } = useAuth();
+
   return (
     <Route
       {...rest}
@@ -66,7 +78,7 @@ function SecuredRoute({ component: Component, authenticated, ...rest }) {
         authenticated === true ? (
           <Component {...props} {...rest} />
         ) : (
-          <Redirect to={{ pathname: "/login", state: { from: props.location } }} />
+          <Redirect to={{ pathname: isLoggedIn ? "/" : "/login", state: { from: props.location } }} />
         )
       }
     />

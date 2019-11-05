@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
+import React from "react";
 
-import { AuthContext } from "../../App";
 import UserTable from "./UserTable";
 import useUser from "../../hooks/useUser";
 
@@ -15,8 +14,7 @@ const tableStyle = {
 };
 
 function ManageUsers() {
-  const { token } = useContext(AuthContext);
-  const user  = useUser(token, "ALL")
+  const user  = useUser("ALL")
 
   return <UserTable style={tableStyle} data={user ? user.map(({password, ...rest}) => rest) : []} />;
 }

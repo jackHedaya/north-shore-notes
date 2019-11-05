@@ -14,7 +14,7 @@ import NSN_Logo from "../assets/NSN_Logo.png";
 import NSN_Logo_Text from "../assets/NSN_Logo_Text.png";
 import "./_styles/Navigation.scss";
 
-function Navigation() {
+function Navigation(props) {
 
   const { isLoggedIn, token } = useContext(AuthContext);
   const user = useUser(token);
@@ -63,7 +63,7 @@ function Navigation() {
           {isLoggedIn && user && (
             <CustomDropdown
               name={user.first_name}
-              redirect={this.props.history.push}
+              redirect={props.history.push}
             />
           )}
         </div>

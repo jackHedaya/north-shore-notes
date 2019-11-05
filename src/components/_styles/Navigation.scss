@@ -32,7 +32,7 @@
     height: 60px;
     width: 90px;
   }
-
+  
   li {
     display: inline-block;
     font-family: "Yanone Kaffeesatz", "Open Sans", Arial, Helvetica, sans-serif;
@@ -49,9 +49,9 @@
   }
 
   .tabs-container {
-
     flex-grow: 1;
     flex-shrink: 1;
+    
     a {
       letter-spacing: 0.04em;
       text-decoration: none;
@@ -59,6 +59,7 @@
       color: white;
       margin-right: 50px;
     }
+    
     a:hover {
       color: $gray;
     }
