@@ -1,25 +1,32 @@
 @import "../../globals.sass";
 
-$issue-margin-between: 5%;
+$issue-margin-between: 3%;
 
 .volume-issue-title {
   @include volume-issue-title();
   padding-bottom: 1.5%;
 }
 
-.titles {
+.sidebar {
   float: left;
-  margin-top: 60px;
+  margin-top: 45px;
   position: fixed;
   font-family: $body-font;
-  color: #394648;
   font-size: 18px;
   width: 15%;
   margin-left: 15px;
+
+  .issue {
+    font-size: 24px;
+    text-align: center;
+  }
+  a {
+    color: #394648;
+  }
 }
 
 .individualTitles {
-  margin-bottom: 10%;
+  margin-bottom: 8%;
   text-decoration: none;
   text-decoration-line: none;
 }
@@ -30,12 +37,13 @@ $issue-margin-between: 5%;
 
 .articles {
   margin-left: 25%;
+  margin-right: 20%;
   float: left;
   font-family: $body-font;
   font-weight: lighter;
-  font-size: 22px;
+  font-size: 16px;
   letter-spacing: 0.01em;
-  line-height: 48px;
+  line-height: 32px;
   text-align: left;
   color: #394648;
   float: right;
@@ -49,6 +57,7 @@ $issue-margin-between: 5%;
     font-family: $title-font;
     font-weight: normal;
     font-size: 38px;
+    line-height: 48px;
     letter-spacing: 0.01em;
     text-align: left;
     color: #394648;
@@ -84,4 +93,14 @@ $issue-margin-between: 5%;
   .articles {
     margin-left: 10%;
   }
+}
+
+.divider {
+  height: 1px;
+    background-color: $gray;
+    width: 30%;
+    margin-top: 8%;
+    margin-bottom: 8%;
+    margin-right: auto;
+    margin-left: auto;
 }
