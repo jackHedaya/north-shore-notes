@@ -22,9 +22,8 @@ function IssueDisplay(props) {
         ))}
       </div>
 
-      <div className="titles">
-        <h3>Insert today's date here</h3>
-        <div className="class" />
+      <div className="sidebar">
+        <h3 className="issue">{"Volume 10 Issue 7"}</h3>
         <div className="divider" />
         {issue.map(({ title, id }) => (
           <Scrollchor
@@ -32,7 +31,7 @@ function IssueDisplay(props) {
             to={`#${title.replace(/\s/g, "")}`}
             animate={{ offset: -100, duration: 500 }}
           >
-            <Sidebar title={title} />
+            <Sidebar title={title}/>
           </Scrollchor>
         ))}
       </div>
