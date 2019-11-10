@@ -16,7 +16,7 @@ $issue-margin-between: 3%;
   width: 15%;
   margin-left: 15px;
 
-  .issue {
+  .currentIssue {
     font-size: 24px;
     text-align: center;
   }
@@ -87,7 +87,7 @@ $issue-margin-between: 3%;
 }
 
 @media (max-width: 60em) {
-  .titles {
+  .sidebar {
     display: none; 
   }
   .articles {
