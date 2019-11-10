@@ -23,7 +23,7 @@ function IssueDisplay(props) {
       </div>
 
       <div className="sidebar">
-        <h3 className="issue">{"Volume 10 Issue 7"}</h3>
+        <h3 className="currentIssue">{"Volume 10 Issue 7"}</h3>
         <div className="divider" />
         {issue.map(({ title, id }) => (
           <Scrollchor
