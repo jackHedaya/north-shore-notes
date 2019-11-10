@@ -23,7 +23,7 @@ function IssueDisplay(props) {
       </div>
 
       <div className="sidebar">
-        <h3 className="currentIssue">{"Volume 10 Issue 7"}</h3>
+        <h3 className="current-issue">{"Volume 10 Issue 7"}</h3>
         <div className="divider" />
         {issue.map(({ title, id }) => (
           <Scrollchor
@@ -31,7 +31,7 @@ function IssueDisplay(props) {
             to={`#${title.replace(/\s/g, "")}`}
             animate={{ offset: -100, duration: 500 }}
           >
-            <Sidebar title={title}/>
+            <SidebarItem title={title}/>
           </Scrollchor>
         ))}
       </div>
@@ -56,10 +56,10 @@ function Article(props) {
   );
 }
 
-function Sidebar(props) {
+function SidebarItem(props) {
   const { title } = props;
 
-  return <p className="individualTitles">{title}</p>;
+  return <p className="individual-titles">{title}</p>;
 }
 
 export default IssueDisplay;
