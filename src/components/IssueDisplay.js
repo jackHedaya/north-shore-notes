@@ -11,7 +11,7 @@ function IssueDisplay(props) {
 
   // visibleIssues will be in the format { id: boolean }
   const [visibleArticles, setVisibleArticles] = useState({});
-  const setVisibleArticle = (articleId, isVisible) => setVisibleArticles({ ...visibleArticles, articleId: isVisible })
+  const setVisibleArticle = (articleId, isVisible) => setVisibleArticles({ ...visibleArticles, [articleId]: isVisible })
   
   return (
     <div className="issue-display">
