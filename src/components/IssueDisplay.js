@@ -49,7 +49,7 @@ function IssueDisplay(props) {
 function Article(props) {
   const { title, body, author, setIsVisible, isVisible } = props;
   
-  const [ref, inView] = useInView({ threshold: 0 });
+  const [ref, inView] = useInView({ threshold: .35 });
   
   useEffect(() => {
     if (isVisible === inView) return
@@ -74,7 +74,7 @@ function Article(props) {
 function Sidebar(props) {
   const { title, isVisible } = props;
 
-  return <p className="individualTitles" style={{ color: isVisible ? "purple" : undefined }}>{title}</p>;
+  return <p className="individualTitles" style={ isVisible ? {fontWeight: "bold", color: "black"} : undefined }>{title}</p>;
 }
 
 export default IssueDisplay;
