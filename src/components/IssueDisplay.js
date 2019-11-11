@@ -1,25 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import Interweave from "interweave";
 import Scrollchor from "react-scrollchor";
+import { useInView } from "react-intersection-observer";
 
 import "./_styles/IssueDisplay.scss";
 
 function IssueDisplay(props) {
   const { issue } = props;
 
+  // visibleIssues will be in the format { id: boolean }
+  const [visibleArticles, setVisibleArticles] = useState({});
+  const setVisibleArticle = (articleId, isVisible) => setVisibleArticles({ ...visibleArticles, articleId: isVisible })
+  
   return (
     <div className="issue-display">
       <div className="articles">
-        {issue.map(({ title, body, author, id }, index) => (
-          <Article
+        {issue.map(({ title, body, author, id }, index) => {
+         return (<Article
             title={title}
             body={body}
             author={author}
             key={id}
+            setIsVisible={(inView) => setVisibleArticle(id, inView)}
+            isVisible={visibleArticles[id]}
             break={index !== issue.length - 1}
-          />
-        ))}
+          />)
+        })}
       </div>
 
       <div className="sidebar">
@@ -31,7 +38,7 @@ function IssueDisplay(props) {
             to={`#${title.replace(/\s/g, "")}`}
             animate={{ offset: -100, duration: 500 }}
           >
-            <Sidebar title={title}/>
+            <Sidebar title={title} isVisible={visibleArticles[id]} />
           </Scrollchor>
         ))}
       </div>
@@ -40,10 +47,18 @@ function IssueDisplay(props) {
 }
 
 function Article(props) {
-  const { title, body, author } = props;
+  const { title, body, author, setIsVisible, isVisible } = props;
+  
+  const [ref, inView] = useInView({ threshold: 0 });
+  
+  useEffect(() => {
+    if (isVisible === inView) return
+    
+    setIsVisible(inView);
+  }, [inView, setIsVisible, isVisible]);
 
   return (
-    <div className="issue">
+    <div className="issue" ref={ref}>
       <div className="article">
         <div className="title" id={title.replace(/\s/g, "")}>
           {title}
@@ -57,9 +72,9 @@ function Article(props) {
 }
 
 function Sidebar(props) {
-  const { title } = props;
+  const { title, isVisible } = props;
 
-  return <p className="individualTitles">{title}</p>;
+  return <p className="individualTitles" style={{ fontWeight: isVisible ? "900" : undefined }}>{title}</p>;
 }
 
 export default IssueDisplay;
