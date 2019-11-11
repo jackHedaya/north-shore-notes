@@ -11,7 +11,7 @@ function IssueDisplay(props) {
 
   // visibleIssues will be in the format { id: boolean }
   const [visibleArticles, setVisibleArticles] = useState({});
-  const setVisibleArticle = (articleId, isVisible) => setVisibleArticles({ ...visibleArticles, articleId: isVisible })
+  const setVisibleArticle = (articleId, isVisible) => setVisibleArticles({ ...visibleArticles, [articleId]: isVisible })
   
   return (
     <div className="issue-display">
@@ -74,7 +74,7 @@ function Article(props) {
 function Sidebar(props) {
   const { title, isVisible } = props;
 
-  return <p className="individualTitles" style={{ fontWeight: isVisible ? "900" : undefined }}>{title}</p>;
+  return <p className="individualTitles" style={{ color: isVisible ? "purple" : undefined }}>{title}</p>;
 }
 
 export default IssueDisplay;
