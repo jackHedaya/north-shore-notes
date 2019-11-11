@@ -1,51 +1,43 @@
-import React from "react";
+import React from 'react'
 
-import Interweave from "interweave";
-import Scrollchor from "react-scrollchor";
+import Interweave from 'interweave'
+import Scrollchor from 'react-scrollchor'
 
-import "./_styles/IssueDisplay.scss";
+import './_styles/IssueDisplay.scss'
 
 function IssueDisplay(props) {
-  const { issue } = props;
+  const { issue } = props
 
   return (
     <div className="issue-display">
       <div className="articles">
         {issue.map(({ title, body, author, id }, index) => (
-          <Article
-            title={title}
-            body={body}
-            author={author}
-            key={id}
-            break={index !== issue.length - 1}
-          />
+          <Article title={title} body={body} author={author} key={id} break={index !== issue.length - 1} />
         ))}
       </div>
 
       <div className="sidebar">
-        <h3 className="current-issue">{"Volume 10 Issue 7"}</h3>
+        <h3 className="current-issue">{`Volume ${issue.length ? issue[0].volume : '–'} Issue ${
+          issue.length ? issue[0].issue : '–'
+        }`}</h3>
         <div className="divider" />
         {issue.map(({ title, id }) => (
-          <Scrollchor
-            key={id}
-            to={`#${title.replace(/\s/g, "")}`}
-            animate={{ offset: -100, duration: 500 }}
-          >
-            <SidebarItem title={title}/>
+          <Scrollchor key={id} to={`#${title.replace(/\s/g, '')}`} animate={{ offset: -100, duration: 500 }}>
+            <SidebarItem title={title} />
           </Scrollchor>
         ))}
       </div>
     </div>
-  );
+  )
 }
 
 function Article(props) {
-  const { title, body, author } = props;
+  const { title, body, author } = props
 
   return (
     <div className="issue">
       <div className="article">
-        <div className="title" id={title.replace(/\s/g, "")}>
+        <div className="title" id={title.replace(/\s/g, '')}>
           {title}
         </div>
         <div className="author">By: {author}</div>
@@ -53,13 +45,13 @@ function Article(props) {
         {props.break ? <div className="break" /> : null}
       </div>
     </div>
-  );
+  )
 }
 
 function SidebarItem(props) {
-  const { title } = props;
+  const { title } = props
 
-  return <p className="individual-titles">{title}</p>;
+  return <p className="individual-titles">{title}</p>
 }
 
-export default IssueDisplay;
+export default IssueDisplay
