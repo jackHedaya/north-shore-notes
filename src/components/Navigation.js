@@ -73,7 +73,7 @@ const NavLink = withRouter(props => {
 
 function CustomDropdown(props) {
   const [open, setOpen] = useState(false)
-  const { setIsLoggedIn, setToken } = useAuth()
+  const { setIsLoggedIn, setToken, userRole } = useAuth()
 
   const toggle = () => setOpen(!open)
 
@@ -93,8 +93,12 @@ function CustomDropdown(props) {
         HELLO, {props.name.toUpperCase()}
       </DropdownToggle>
       <DropdownMenu right>
-        <DropdownItem header>Admin</DropdownItem>
-        <DropdownLink to="/manage-users">Manage Users</DropdownLink>
+        {userRole === 'ADMIN' && (
+          <>
+            <DropdownItem header>Admin</DropdownItem>
+            <DropdownLink to="/manage-users">Manage Users</DropdownLink>
+          </>
+        )}
         <DropdownItem header>Editor</DropdownItem>
         <DropdownLink to="/add-issue">Add Issue</DropdownLink>
         <DropdownItem divider>Admin</DropdownItem>
