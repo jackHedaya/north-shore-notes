@@ -1,4 +1,4 @@
-import fetch from "./fetch";
+import fetch from './fetch'
 
 /**
  *
@@ -6,5 +6,5 @@ import fetch from "./fetch";
  * @param {import("http").RequestOptions} options
  */
 export function login(username, password) {
-  return fetch("/login", { method: "POST", body: { username, password } });
+  return fetch('/login', { method: 'POST', body: { username, password } })
 }

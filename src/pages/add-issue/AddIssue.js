@@ -1,65 +1,69 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
-import Scroll from "react-scrollchor";
-import ReactQuill from "react-quill";
+import Scroll from 'react-scrollchor'
+import ReactQuill from 'react-quill'
 
-import DeleteIcon from "@material-ui/icons/Delete";
+import DeleteIcon from '@material-ui/icons/Delete'
 
-import "./AddIssue.scss";
+import './AddIssue.scss'
 
-const quickId = () => Math.random().toString();
+const quickId = () => Math.random().toString()
 
 function AddIssue() {
-  const BLANK_ARTICLE = () => ({ title: "", author: "", body: "", id: quickId() });
+  const BLANK_ARTICLE = () => ({ title: '', author: '', body: '', id: quickId() })
 
-  const [volume, setVolume] = useState(1);
-  const [issue, setIssue] = useState(1);
-  const [articles, setArticles] = useState([BLANK_ARTICLE()]);
+  const [volume, setVolume] = useState(1)
+  const [issue, setIssue] = useState(1)
+  const [articles, setArticles] = useState([BLANK_ARTICLE()])
 
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false)
+  const [isError, setIsError] = useState(false)
 
   function showError() {
-    setIsError(true);
+    setIsError(true)
     setTimeout(function() {
-      setIsError(false);
-    }, 3000);
+      setIsError(false)
+    }, 3000)
   }
 
   function addArticle() {
-    setArticles([...articles, BLANK_ARTICLE()]);
+    setArticles([...articles, BLANK_ARTICLE()])
   }
 
   function editArticle(index, newData) {
-    setArticles([...articles.slice(0, index), { ...articles[index], ...newData }, ...articles.slice(index + 1)]);
+    setArticles([
+      ...articles.slice(0, index),
+      { ...articles[index], ...newData },
+      ...articles.slice(index + 1),
+    ])
   }
 
   function deleteArticle(index) {
-    setArticles([...articles.slice(0, index), ...articles.slice(index + 1)]);
+    setArticles([...articles.slice(0, index), ...articles.slice(index + 1)])
   }
 
   function submitIssue() {
-    setIsLoading(true);
-    setIsError(false);
+    setIsLoading(true)
+    setIsError(false)
 
-    fetch("/issue", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({ volume, issue, articles })
+    fetch('/issue', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ volume, issue, articles }),
     })
       .then(resp => {
-        if (resp.ok) setIsError(false);
-        else showError();
+        if (resp.ok) setIsError(false)
+        else showError()
       })
       .catch(_ => showError())
-      .finally(_ => setIsLoading(false));
+      .finally(_ => setIsLoading(false))
   }
 
   return (
     <div className="add-issue">
       <div className="title">
-        Volume <TitleInput value={volume || ""} updateState={x => setVolume(x)} /> Issue{" "}
-        <TitleInput value={issue || ""} updateState={x => setIssue(x)} />
+        Volume <TitleInput value={volume || ''} updateState={x => setVolume(x)} /> Issue{' '}
+        <TitleInput value={issue || ''} updateState={x => setIssue(x)} />
       </div>
       <Outline articles={articles} />
       <Submit send={submitIssue} loading={isLoading} error={isError} />
@@ -77,7 +81,7 @@ function AddIssue() {
       ))}
       <AddButton onClick={addArticle} />
     </div>
-  );
+  )
 }
 
 function Outline(props) {
@@ -91,49 +95,55 @@ function Outline(props) {
         </Scroll>
       ))}
     </div>
-  );
+  )
 }
 
 function TitleInput(props) {
   return (
     <input
       onFocus={({ currentTarget: e }) => {
-        e.placeholder = e.value;
-        e.value = null;
+        e.placeholder = e.value
+        e.value = null
       }}
       onBlur={({ currentTarget: e }) => (e.value = e.value || e.placeholder)}
-      onChange={e => props.updateState(!e.currentTarget.value ? null : parseInt(e.currentTarget.value))}
-      onKeyDown={e => (isNaN(parseInt(e.currentTarget.value + e.key)) && e.keyCode !== 8 ? e.preventDefault() : null)}
+      onChange={e =>
+        props.updateState(!e.currentTarget.value ? null : parseInt(e.currentTarget.value))
+      }
+      onKeyDown={e =>
+        isNaN(parseInt(e.currentTarget.value + e.key)) && e.keyCode !== 8
+          ? e.preventDefault()
+          : null
+      }
       value={props.value}
     />
-  );
+  )
 }
 
 const quillOptions = {
   modules: {
     toolbar: [
       [{ header: [1, 2, false] }],
-      ["bold", "italic", "underline", "strike", "blockquote"],
-      [{ list: "ordered" }, { list: "bullet" }, { indent: "-1" }, { indent: "+1" }],
-      ["link", "image"],
-      ["clean"]
-    ]
+      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+      [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
+      ['link', 'image'],
+      ['clean'],
+    ],
   },
 
   formats: [
-    "header",
-    "bold",
-    "italic",
-    "underline",
-    "strike",
-    "blockquote",
-    "list",
-    "bullet",
-    "indent",
-    "link",
-    "image"
-  ]
-};
+    'header',
+    'bold',
+    'italic',
+    'underline',
+    'strike',
+    'blockquote',
+    'list',
+    'bullet',
+    'indent',
+    'link',
+    'image',
+  ],
+}
 
 function ArticleForm(props) {
   return (
@@ -163,7 +173,7 @@ function ArticleForm(props) {
       />
       {props.break && <div className="break" />}
     </div>
-  );
+  )
 }
 
 function AddButton(props) {
@@ -171,7 +181,7 @@ function AddButton(props) {
     <div className="add-button" {...props}>
       Add Article
     </div>
-  );
+  )
 }
 
 function Submit(props) {
@@ -180,14 +190,14 @@ function Submit(props) {
       className="submit"
       onClick={!props.loading && props.send}
       style={{
-        width: props.loading ? "30px" : undefined,
-        backgroundColor: props.error ? "red" : undefined,
-        textIndent: props.loading ? 30 : undefined
+        width: props.loading ? '30px' : undefined,
+        backgroundColor: props.error ? 'red' : undefined,
+        textIndent: props.loading ? 30 : undefined,
       }}
     >
       Upload
     </div>
-  );
+  )
 }
 
-export default AddIssue;
+export default AddIssue

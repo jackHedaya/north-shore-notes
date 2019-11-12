@@ -1,13 +1,13 @@
-import React from "react";
- 
-import useIssue from "../../hooks/useIssue";
+import React from 'react'
 
-import IssueDisplay from "../../components/IssueDisplay";
+import useIssue from '../../hooks/useIssue'
+
+import IssueDisplay from '../../components/IssueDisplay'
 
 function ThisWeek() {
-  const issue = useIssue({ volume: "LATEST", issue: "LATEST" });
+  const issue = useIssue({ volume: 'LATEST', issue: 'LATEST' })
 
-  return <IssueDisplay issue={issue} />;
+  return <IssueDisplay issue={issue} />
 }
 
-export default ThisWeek;
+export default ThisWeek
