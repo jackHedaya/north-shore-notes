@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
-import { Persist } from 'react-persist'
+import Persist from './components/Persist'
 
 import Navigation from './components/Navigation'
 
@@ -21,7 +21,7 @@ import useAuth from './hooks/useAuth'
 import './App.scss'
 
 /**
- * @type {React.Context<{ isLoggedIn: boolean, token: string, setIsLoggedIn: () => void, setToken: () => void }>}
+ * @type {React.Context<{ isLoggedIn: boolean, token: string, setIsLoggedIn: () => void, setToken: () => void, userRole: string }>}
  */
 const AuthContext = React.createContext()
 
@@ -35,15 +35,17 @@ function App() {
     <AuthContext.Provider value={{ token, setToken, isLoggedIn, setIsLoggedIn, userRole }}>
       <Persist
         name="north-shore-notes"
-        data={{ token, isLoggedIn }}
-        debounce={500}
+        data={{ token, isLoggedIn, userRole }}
+        debounce={10}
         onMount={data => {
           setIsLoggedIn(data.isLoggedIn)
           setToken(data.token)
 
-          getRole(data.token).then(role => {
-            setUserRole(role)
-          })
+          if (data.isLoggedIn && !data.userRole)
+            getRole(data.token).then(role => {
+              setUserRole(role)
+            })
+          else setUserRole(data.userRole)
         }}
       />
       <Router>
