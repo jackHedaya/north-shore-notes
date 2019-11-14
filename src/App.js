@@ -59,18 +59,13 @@ function App() {
               <Route exact path="/previous-issues/" component={PreviousIssues} />
               <Route exact path="/student-art/" component={StudentArt} />
               <Route exact path="/about/" component={About} />
-              <SecuredRoute
-                exact
-                path="/add-issue/"
-                component={AddIssue}
-                authenticated={isLoggedIn}
-              />
+              <SecuredRoute exact path="/add-issue/" component={AddIssue} />
               <Route exact path="/login/" component={Login} />
               <SecuredRoute
                 exact
                 path="/manage-users/"
                 component={ManageUsers}
-                authenticated={isLoggedIn && userRole === 'ADMIN'}
+                authenticated={userRole === 'ADMIN'}
               />
             </Switch>
           </div>
@@ -87,7 +82,7 @@ function SecuredRoute({ component: Component, authenticated, ...rest }) {
     <Route
       {...rest}
       render={props =>
-        authenticated === true ? (
+        isLoggedIn && (authenticated === true || authenticated === undefined) ? (
           <Component {...props} {...rest} />
         ) : (
           <Redirect

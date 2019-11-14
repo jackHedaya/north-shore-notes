@@ -64,7 +64,7 @@ function Table(props) {
         },
         { title: 'First name', field: 'first_name' },
         { title: 'Last Name', field: 'last_name' },
-        { title: 'Username', field: 'username' },
+        { title: 'Username', field: 'username', editable: false },
         {
           title: 'Password',
           field: 'password',
