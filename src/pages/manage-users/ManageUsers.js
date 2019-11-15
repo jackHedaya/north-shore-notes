@@ -15,7 +15,7 @@ const tableStyle = {
 
 function ManageUsers() {
   const user = useUser('ALL')
-  console.log(user)
+
   return (
     <UserTable style={tableStyle} data={user ? user.map(({ password, ...rest }) => rest) : []} />
   )
