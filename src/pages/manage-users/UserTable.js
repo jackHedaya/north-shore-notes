@@ -1,6 +1,10 @@
 import React, { forwardRef } from 'react'
 import MaterialTable from 'material-table'
 
+import { updateUser } from '../../services/user.service'
+
+import useAuth from '../../hooks/useAuth'
+
 import AddBox from '@material-ui/icons/AddBox'
 import ArrowUpward from '@material-ui/icons/ArrowUpward'
 import Check from '@material-ui/icons/Check'
@@ -47,6 +51,9 @@ const ellipses = (text, limit) => {
 }
 
 function Table(props) {
+  const { reloadData } = props
+  const { token } = useAuth()
+
   return (
     <MaterialTable
       title="Active Users"
@@ -83,11 +90,11 @@ function Table(props) {
             }, 1000)
           }),
         onRowUpdate: (newData, oldData) =>
-          new Promise((resolve, reject) => {
-            setTimeout(() => {
-              resolve()
-            }, 1000)
-          }),
+          updateUser(newData['id'], {
+            token,
+            changes: shallowObjectComparison(oldData, newData),
+          }).then(_ => reloadData()),
+
         onRowDelete: oldData =>
           new Promise((resolve, reject) => {
             setTimeout(() => {
@@ -98,6 +105,16 @@ function Table(props) {
       {...props}
     />
   )
+}
+
+function shallowObjectComparison(oldObj, newObj) {
+  let ret = {}
+
+  Object.entries(newObj).forEach(([key, val]) => {
+    if (val !== oldObj[key]) ret[key] = val
+  })
+
+  return ret
 }
 
 export default Table
