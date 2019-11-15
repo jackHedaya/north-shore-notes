@@ -13,8 +13,16 @@ export default function newFetch(url, { method = 'GET', headers, body, ...option
     ...options,
     method,
     body: method !== 'GET' ? JSON.stringify(body) : undefined,
-  }).then(resp => {
-    if (resp.ok) return resp.json()
+  }).then(async resp => {
+    if (resp.ok) {
+      try {
+        const json = await resp.json()
+
+        return json
+      } catch (_) {
+        return Promise.resolve()
+      }
+    }
     throw resp
   })
 }
