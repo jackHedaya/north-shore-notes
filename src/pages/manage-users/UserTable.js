@@ -64,7 +64,7 @@ function Table(props) {
         },
         { title: 'First name', field: 'first_name' },
         { title: 'Last Name', field: 'last_name' },
-        { title: 'Username', field: 'username', editable: false },
+        { title: 'Username', field: 'username', editable: 'never' },
         {
           title: 'Password',
           field: 'password',
@@ -73,7 +73,7 @@ function Table(props) {
           initialEditValue: '',
           render: () => <>&lt;Hidden&gt;</>,
         },
-        { title: 'Role', field: 'role' },
+        { title: 'Role', field: 'role', lookup: { ADMIN: 'ADMIN', EDITOR: 'EDITOR' } },
       ]}
       editable={{
         onRowAdd: newData =>
