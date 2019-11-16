@@ -1,10 +1,9 @@
 import React, { forwardRef } from 'react'
 import MaterialTable from 'material-table'
 
-import { addUser, updateUser, deleteUser } from '../../services/user.service'
+import { updateUser } from '../../services/user.service'
 
 import useAuth from '../../hooks/useAuth'
-import useUser from '../../hooks/useUser'
 
 import AddBox from '@material-ui/icons/AddBox'
 import ArrowUpward from '@material-ui/icons/ArrowUpward'
@@ -53,9 +52,7 @@ const ellipses = (text, limit) => {
 
 function Table(props) {
   const { reloadData } = props
-
   const { token } = useAuth()
-  const user = useUser('ME')
 
   return (
     <MaterialTable
@@ -83,32 +80,26 @@ function Table(props) {
           initialEditValue: '',
           render: () => <>&lt;Hidden&gt;</>,
         },
-        {
-          title: 'Role',
-          field: 'role',
-          lookup: { ADMIN: 'ADMIN', EDITOR: 'EDITOR' },
-          editable: (_, row = {}) => row.id !== user.id,
-        },
+        { title: 'Role', field: 'role', lookup: { ADMIN: 'ADMIN', EDITOR: 'EDITOR' } },
       ]}
       editable={{
-        onRowAdd: newData => addUser({ token, ...newData }).then(_ => reloadData()),
-
+        onRowAdd: newData =>
+          new Promise((resolve, reject) => {
+            setTimeout(() => {
+              resolve()
+            }, 1000)
+          }),
         onRowUpdate: (newData, oldData) =>
-          updateUser(newData.id, {
+          updateUser(newData['id'], {
             token,
             changes: shallowObjectComparison(oldData, newData),
           }).then(_ => reloadData()),
 
         onRowDelete: oldData =>
-          new Promise(resolve => {
-            if (oldData.id === user.id) resolve()
-            else
-              deleteUser(oldData.id, { token })
-                .then(_ => {
-                  resolve()
-                  reloadData()
-                })
-                .catch(_ => resolve())
+          new Promise((resolve, reject) => {
+            setTimeout(() => {
+              resolve()
+            }, 1000)
           }),
       }}
       {...props}
