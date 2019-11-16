@@ -17,7 +17,7 @@ export default function useUser(u) {
     const userData = u === 'ME' ? getMe(token) : getUser(u, { token })
 
     userData.then(res => setUser(res)).catch(_ => setUser(null))
-  }, [u, token, setUser])
+  }, [u, token])
 
   return user
 }
