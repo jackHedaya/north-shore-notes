@@ -6,9 +6,8 @@ import useAuth from './useAuth'
 /**
  *
  * @param {string} u user_id, "ME" or "ALL"
- * @param {{ reload: any }}
  */
-export default function useUser(u, { reload } = {}) {
+export default function useUser(u) {
   const { token } = useAuth()
   const [user, setUser] = useState(null)
 
@@ -18,7 +17,7 @@ export default function useUser(u, { reload } = {}) {
     const userData = u === 'ME' ? getMe(token) : getUser(u, { token })
 
     userData.then(res => setUser(res)).catch(_ => setUser(null))
-  }, [u, token, setUser, reload])
+  }, [u, token, setUser])
 
   return user
 }
