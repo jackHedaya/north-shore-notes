@@ -5,13 +5,12 @@ import Loader from 'react-loader-spinner'
 import useAuth from '../../hooks/useAuth'
 
 import * as authenticationService from '../../services/authentication.service'
-import { getRole } from '../../services/user.service'
 
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 import './Login.scss'
 
 function Login(props) {
-  const { isLoggedIn, setIsLoggedIn, setToken, setUserRole } = useAuth()
+  const { isLoggedIn, setIsLoggedIn, setToken } = useAuth()
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -25,11 +24,6 @@ function Login(props) {
       .login(username, password)
       .then(data => {
         setToken(data.jwt)
-
-        return getRole(data.jwt)
-      })
-      .then(role => {
-        setUserRole(role)
         setIsLoggedIn(true)
       })
       .catch(e => {
