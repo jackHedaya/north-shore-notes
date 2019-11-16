@@ -1,9 +1,7 @@
 import React from 'react'
 
 import UserTable from './UserTable'
-
 import useUser from '../../hooks/useUser'
-import useReload from '../../hooks/useReload'
 
 import './ManageUsers.scss'
 
@@ -16,15 +14,10 @@ const tableStyle = {
 }
 
 function ManageUsers() {
-  const [shouldReload, reloadData] = useReload()
-  const user = useUser('ALL', { reload: shouldReload })
+  const user = useUser('ALL')
 
   return (
-    <UserTable
-      style={tableStyle}
-      data={user ? user.map(({ password, ...rest }) => rest) : []}
-      reloadData={reloadData}
-    />
+    <UserTable style={tableStyle} data={user ? user.map(({ password, ...rest }) => rest) : []} />
   )
 }
 

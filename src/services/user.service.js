@@ -9,19 +9,6 @@ export function getUser(user, { token }) {
 }
 
 /**
- *
- * @param {string} user user_id
- * @param {{ token: string }}
- */
-export function updateUser(user, { token, changes }) {
-  return fetch('/user', {
-    method: 'PUT',
-    headers: { Authorization: `Bearer ${token}` },
-    body: { id: user, changes },
-  })
-}
-
-/**
  * Gets current user with token
  */
 export function getMe(token) {
