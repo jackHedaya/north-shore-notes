@@ -1,15 +1,22 @@
 import React, { useState } from 'react'
-
 import Scroll from 'react-scrollchor'
 import ReactQuill from 'react-quill'
+import { useHistory } from 'react-router-dom'
 
 import DeleteIcon from '@material-ui/icons/Delete'
+
+import useAuth from '../../hooks/useAuth'
+
+import { postIssue } from '../../services/issue.service'
 
 import './AddIssue.scss'
 
 const quickId = () => Math.random().toString()
 
 function AddIssue() {
+  const { token } = useAuth()
+  const history = useHistory()
+
   const BLANK_ARTICLE = () => ({ title: '', author: '', body: '', id: quickId() })
 
   const [volume, setVolume] = useState(1)
@@ -46,17 +53,12 @@ function AddIssue() {
     setIsLoading(true)
     setIsError(false)
 
-    fetch('/issue', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify({ volume, issue, articles }),
-    })
-      .then(resp => {
-        if (resp.ok) setIsError(false)
-        else showError()
+    postIssue({ volume, issue, articles, token })
+      .then(_ => history.push('/'))
+      .catch(_ => {
+        showError()
+        setIsLoading(false)
       })
-      .catch(_ => showError())
-      .finally(_ => setIsLoading(false))
   }
 
   return (
@@ -188,7 +190,7 @@ function Submit(props) {
   return (
     <div
       className="submit"
-      onClick={!props.loading && props.send}
+      onClick={props.loading ? undefined : props.send}
       style={{
         width: props.loading ? '30px' : undefined,
         backgroundColor: props.error ? 'red' : undefined,

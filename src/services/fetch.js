@@ -5,7 +5,7 @@ import { encode } from 'querystring'
  * @param {string} url
  * @param {import("http").RequestOptions} options
  */
-export default function newFetch(url, { method, headers, body, ...options }) {
+export default function newFetch(url, { method = 'GET', headers, body, ...options }) {
   const fullUrl = url + (method === 'GET' && body ? `?${encode(body)}` : '')
 
   return fetch(fullUrl, {
@@ -13,8 +13,13 @@ export default function newFetch(url, { method, headers, body, ...options }) {
     ...options,
     method,
     body: method !== 'GET' ? JSON.stringify(body) : undefined,
-  }).then(resp => {
-    if (resp.ok) return resp.json()
-    throw resp
   })
+    .then(resp => {
+      if (resp.ok) return resp.json()
+      throw resp
+    })
+    .catch(e => {
+      console.error(e)
+      throw e
+    })
 }
