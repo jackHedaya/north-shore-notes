@@ -8,7 +8,7 @@ function PreviousIssues() {
   return (
     <div>
       {issues.map(issue => (
-        <IssueDisplay key={`${issue[0].issue} ${issue[0].volume}`} issue={issue} />
+        <IssueDisplay key={`IssueDisplay/${issue[0].volume}/${issue[0].issue}`} issue={issue} />
       ))}
     </div>
   )
