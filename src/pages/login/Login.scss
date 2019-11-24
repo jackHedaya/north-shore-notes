@@ -1,9 +1,8 @@
-@import "../../globals.sass";
+@import '../../globals.sass';
 
 .login {
+  margin-top: 30px;
   text-align: center;
-  margin-left: -250px;
-  margin-right: -5%;
 
   .inputs {
     display: inline-block;
@@ -15,7 +14,8 @@
     max-height: 25px;
 
     .name {
-      font-family: "Helvetica Neue";
+      font-family: 'Helvetica Neue';
+      font-weight: 100;
       color: gray;
       font-size: 0.9em;
       text-align: left;
