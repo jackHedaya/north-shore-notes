@@ -1,6 +1,11 @@
 import React, { forwardRef } from 'react'
 import MaterialTable from 'material-table'
 
+import { addUser, updateUser, deleteUser } from '../../services/user.service'
+
+import useAuth from '../../hooks/useAuth'
+import useUser from '../../hooks/useUser'
+
 import AddBox from '@material-ui/icons/AddBox'
 import ArrowUpward from '@material-ui/icons/ArrowUpward'
 import Check from '@material-ui/icons/Check'
@@ -47,6 +52,11 @@ const ellipses = (text, limit) => {
 }
 
 function Table(props) {
+  const { reloadData } = props
+
+  const { token } = useAuth()
+  const user = useUser('ME')
+
   return (
     <MaterialTable
       title="Active Users"
@@ -64,7 +74,7 @@ function Table(props) {
         },
         { title: 'First name', field: 'first_name' },
         { title: 'Last Name', field: 'last_name' },
-        { title: 'Username', field: 'username' },
+        { title: 'Username', field: 'username', editable: 'never' },
         {
           title: 'Password',
           field: 'password',
@@ -73,31 +83,47 @@ function Table(props) {
           initialEditValue: '',
           render: () => <>&lt;Hidden&gt;</>,
         },
-        { title: 'Role', field: 'role' },
+        {
+          title: 'Role',
+          field: 'role',
+          lookup: { ADMIN: 'ADMIN', EDITOR: 'EDITOR' },
+          editable: (_, row = {}) => row.id !== user.id,
+        },
       ]}
       editable={{
-        onRowAdd: newData =>
-          new Promise((resolve, reject) => {
-            setTimeout(() => {
-              resolve()
-            }, 1000)
-          }),
+        onRowAdd: newData => addUser({ token, ...newData }).then(_ => reloadData()),
+
         onRowUpdate: (newData, oldData) =>
-          new Promise((resolve, reject) => {
-            setTimeout(() => {
-              resolve()
-            }, 1000)
-          }),
+          updateUser(newData.id, {
+            token,
+            changes: shallowObjectComparison(oldData, newData),
+          }).then(_ => reloadData()),
+
         onRowDelete: oldData =>
-          new Promise((resolve, reject) => {
-            setTimeout(() => {
-              resolve()
-            }, 1000)
+          new Promise(resolve => {
+            if (oldData.id === user.id) resolve()
+            else
+              deleteUser(oldData.id, { token })
+                .then(_ => {
+                  resolve()
+                  reloadData()
+                })
+                .catch(_ => resolve())
           }),
       }}
       {...props}
     />
   )
+}
+
+function shallowObjectComparison(oldObj, newObj) {
+  let ret = {}
+
+  Object.entries(newObj).forEach(([key, val]) => {
+    if (val !== oldObj[key]) ret[key] = val
+  })
+
+  return ret
 }
 
 export default Table
