@@ -104,14 +104,14 @@
 
 .dropdown {
   .greeting {
+    font-size: 12px;
     margin-right: 125px;
     cursor: pointer;
-    color: white;
     background-color: none;
   }
 
   .greeting:hover {
-    color: #ededed;
+    color: #a1a1a1;
   }
 
   .dropdown-content {
