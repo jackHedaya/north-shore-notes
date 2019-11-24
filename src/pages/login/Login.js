@@ -45,30 +45,19 @@ function Login(props) {
     <div className="login">
       <div className="volume-issue-title">Login</div>
       <div className="inputs">
-        <Input
+        <input
           type="text"
-          name="username"
-          value={username}
+          placeholder="username"
           onChange={e => setUsername(e.currentTarget.value)}
         />
-        <Input
+        <input
           type="password"
-          name="password"
-          value={password}
+          placeholder="password"
           onChange={e => setPassword(e.currentTarget.value)}
         />
         <LoginButton loading={isLoading} login={login} error={isInvalid} />
       </div>
     </div>
-  )
-}
-
-function Input(props) {
-  return (
-    <>
-      <div className="name">{props.name}</div>
-      <input {...props} />
-    </>
   )
 }
 
