@@ -1,5 +1,5 @@
-@import "../../globals.sass";
-@import "~bootstrap/dist/css/bootstrap.min.css";
+@import '../../globals.sass';
+@import '~bootstrap/dist/css/bootstrap.min.css';
 
 .navigation {
   position: fixed;
@@ -24,7 +24,7 @@
   #logo:hover {
     cursor: pointer;
     transform: rotate(360deg);
-    transition: all .8s ease-in-out 0s;
+    transition: all 0.8s ease-in-out 0s;
   }
 
   #logo_text {
@@ -32,10 +32,10 @@
     height: 60px;
     width: 90px;
   }
-  
+
   li {
     display: inline-block;
-    font-family: "Yanone Kaffeesatz", "Open Sans", Arial, Helvetica, sans-serif;
+    font-family: 'Yanone Kaffeesatz', 'Open Sans', Arial, Helvetica, sans-serif;
   }
 
   .other-tabs {
@@ -47,11 +47,14 @@
     justify-content: flex-end;
     float: right;
   }
-
+  .drop-down-tab {
+    color: white;
+    float: right;
+  }
   .tabs-container {
     flex-grow: 1;
     flex-shrink: 1;
-    
+
     a {
       letter-spacing: 0.04em;
       text-decoration: none;
@@ -59,7 +62,7 @@
       color: white;
       margin-right: 50px;
     }
-    
+
     a:hover {
       color: $gray;
     }
@@ -73,33 +76,17 @@
     background-color: white;
     color: green !important;
   }
-
-  .greeting {
-    cursor: pointer;
-
-    &.btn-secondary,
-    &.dropdown-toggle,
-    &.btn {
-      @include counter-bootstrap();
-
-      margin-right: 50px;
-      line-height: 50px;
-      margin-left: 10px;
-      color: #212529 !important;
-      background: none !important;
-    }
-  }
 }
 
 .resizeNavBar {
   height: 70px;
   line-height: 70px !important;
   -webkit-transition: all 0.2s;
-	-moz-transition: all 0.2s;
-	-ms-transition: all 0.2s;
-	-o-transition: all 02s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 02s;
   transition: all 0.2s;
-  
+
   #logo {
     height: 45px;
     width: 45px;
@@ -112,5 +99,45 @@
   .other-tabs {
     padding-left: 35px;
     float: left;
+  }
+}
+
+.dropdown {
+  .greeting {
+    margin-right: 125px;
+    cursor: pointer;
+    color: white;
+    background-color: none;
+  }
+
+  .greeting:hover {
+    color: #ededed;
+  }
+
+  .dropdown-content {
+    border-radius: 5px;
+    cursor: pointer;
+    display: none;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    color: black;
+    background-color: white;
+    text-align: center;
+    position: absolute;
+
+    .link {
+      font-size: 14px;
+      padding-left: 8px;
+      padding-right: 8px;
+      height: 60px;
+      line-height: 60px;
+    }
+  }
+}
+
+.dropdown:hover > .dropdown-content {
+  display: block;
+
+  .link:hover {
+    background-color: #ededed;
   }
 }
