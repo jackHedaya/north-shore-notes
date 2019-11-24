@@ -87,7 +87,7 @@ function CustomDropdown(props) {
 
   return (
     <div className="dropdown">
-      <div className="greeting"> Hello, {props.name.toUpperCase()}</div>
+      <div className="greeting">Hello, {props.name.toUpperCase()}</div>
       {userRole === 'ADMIN' && (
         <div className="dropdown-content">
           <DropdownLink to="/manage-users">Manage Users</DropdownLink>
