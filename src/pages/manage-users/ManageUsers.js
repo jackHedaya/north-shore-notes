@@ -9,6 +9,7 @@ import './ManageUsers.scss'
 
 const tableStyle = {
   position: 'absolute',
+  zIndex: '-1',
   left: '5vw',
   top: '9vw',
   width: '90vw',
