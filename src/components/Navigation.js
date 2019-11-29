@@ -90,34 +90,14 @@ function CustomDropdown(props) {
   return (
     <div className="dropdown">
       <div className="greeting">Hello, {capitalize(props.name)}</div>
-      {userRole === 'ADMIN' && (
-        <div className="dropdown-content">
-          <DropdownLink to="/manage-users">Manage Users</DropdownLink>
-          <DropdownLink to="/add-issue">Add Issue</DropdownLink>
-          <div className="link" onClick={signOut}>
-            Log out
-          </div>
+      <div className="dropdown-content">
+        {userRole === 'ADMIN' && <DropdownLink to="/manage-users">Manage Users</DropdownLink>}
+        <DropdownLink to="/add-issue">Add Issue</DropdownLink>
+        <div className="link" onClick={signOut}>
+          Log out
         </div>
-      )}
+      </div>
     </div>
-
-    // <Dropdown>
-    //   <DropdownToggle caret className="greeting">
-    //     HELLO, {props.name.toUpperCase()}
-    //   </DropdownToggle>
-    //   <DropdownMenu right>
-    //     {userRole === 'ADMIN' && (
-    //       <>
-    //         <DropdownItem header>Admin</DropdownItem>
-    //         <DropdownLink to="/manage-users">Manage Users</DropdownLink>
-    //       </>
-    //     )}
-    //     <DropdownItem header>Editor</DropdownItem>
-    //     <DropdownLink to="/add-issue">Add Issue</DropdownLink>
-    //     <DropdownItem divider>Admin</DropdownItem>
-    //     <DropdownItem onClick={signOut}>Log Out</DropdownItem>
-    //   </DropdownMenu>
-    // </Dropdown>
   )
 }
 
