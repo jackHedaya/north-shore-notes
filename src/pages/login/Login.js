@@ -5,12 +5,13 @@ import Loader from 'react-loader-spinner'
 import useAuth from '../../hooks/useAuth'
 
 import * as authenticationService from '../../services/authentication.service'
+import { getRole } from '../../services/user.service'
 
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 import './Login.scss'
 
 function Login(props) {
-  const { isLoggedIn, setIsLoggedIn, setToken } = useAuth()
+  const { isLoggedIn, setIsLoggedIn, setToken, setUserRole } = useAuth()
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -24,6 +25,11 @@ function Login(props) {
       .login(username, password)
       .then(data => {
         setToken(data.jwt)
+
+        return getRole(data.jwt)
+      })
+      .then(role => {
+        setUserRole(role)
         setIsLoggedIn(true)
       })
       .catch(e => {
@@ -45,30 +51,19 @@ function Login(props) {
     <div className="login">
       <div className="volume-issue-title">Login</div>
       <div className="inputs">
-        <Input
+        <input
           type="text"
-          name="username"
-          value={username}
+          placeholder="username"
           onChange={e => setUsername(e.currentTarget.value)}
         />
-        <Input
+        <input
           type="password"
-          name="password"
-          value={password}
+          placeholder="password"
           onChange={e => setPassword(e.currentTarget.value)}
         />
         <LoginButton loading={isLoading} login={login} error={isInvalid} />
       </div>
     </div>
-  )
-}
-
-function Input(props) {
-  return (
-    <>
-      <div className="name">{props.name}</div>
-      <input {...props} />
-    </>
   )
 }
 

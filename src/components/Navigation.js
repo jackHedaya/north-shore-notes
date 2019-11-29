@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Link, withRouter } from 'react-router-dom'
-import { Dropdown, DropdownMenu, DropdownToggle, DropdownItem } from 'reactstrap'
 
 import useUser from '../hooks/useUser'
 import useAuth from '../hooks/useAuth'
+
+import capitalize from '../_helpers/capitalize'
 
 import NSN_Logo from '../assets/NSN_Logo.png'
 import NSN_Logo_Text from '../assets/NSN_Logo_Text.png'
@@ -50,9 +51,11 @@ function Navigation(props) {
           <NavLink to="/previous-issues/">PREVIOUS ISSUES</NavLink>
           <NavLink to="/last-week/">LAST WEEK</NavLink>
           <NavLink to="/this-week/">THIS WEEK</NavLink>
-          {isLoggedIn && user && (
-            <CustomDropdown name={user.first_name} redirect={props.history.push} />
-          )}
+          <div className="drop-down-tab">
+            {isLoggedIn && user && (
+              <CustomDropdown name={user.first_name} redirect={props.history.push} />
+            )}
+          </div>
         </div>
       </div>
     </ul>
@@ -72,10 +75,7 @@ const NavLink = withRouter(props => {
 })
 
 function CustomDropdown(props) {
-  const [open, setOpen] = useState(false)
   const { setIsLoggedIn, setToken, userRole } = useAuth()
-
-  const toggle = () => setOpen(!open)
 
   const signOut = () => {
     setToken(null)
@@ -84,27 +84,40 @@ function CustomDropdown(props) {
   }
 
   const DropdownLink = ({ to, ...other }) => (
-    <DropdownItem onClick={() => props.redirect(to)} {...other} />
+    <div className="link" onClick={() => props.redirect(to)} {...other} />
   )
 
   return (
-    <Dropdown isOpen={open} toggle={toggle} nav>
-      <DropdownToggle caret className="greeting">
-        HELLO, {props.name.toUpperCase()}
-      </DropdownToggle>
-      <DropdownMenu right>
-        {userRole === 'ADMIN' && (
-          <>
-            <DropdownItem header>Admin</DropdownItem>
-            <DropdownLink to="/manage-users">Manage Users</DropdownLink>
-          </>
-        )}
-        <DropdownItem header>Editor</DropdownItem>
-        <DropdownLink to="/add-issue">Add Issue</DropdownLink>
-        <DropdownItem divider>Admin</DropdownItem>
-        <DropdownItem onClick={signOut}>Log Out</DropdownItem>
-      </DropdownMenu>
-    </Dropdown>
+    <div className="dropdown">
+      <div className="greeting">Hello, {capitalize(props.name)}</div>
+      {userRole === 'ADMIN' && (
+        <div className="dropdown-content">
+          <DropdownLink to="/manage-users">Manage Users</DropdownLink>
+          <DropdownLink to="/add-issue">Add Issue</DropdownLink>
+          <div className="link" onClick={signOut}>
+            Log out
+          </div>
+        </div>
+      )}
+    </div>
+
+    // <Dropdown>
+    //   <DropdownToggle caret className="greeting">
+    //     HELLO, {props.name.toUpperCase()}
+    //   </DropdownToggle>
+    //   <DropdownMenu right>
+    //     {userRole === 'ADMIN' && (
+    //       <>
+    //         <DropdownItem header>Admin</DropdownItem>
+    //         <DropdownLink to="/manage-users">Manage Users</DropdownLink>
+    //       </>
+    //     )}
+    //     <DropdownItem header>Editor</DropdownItem>
+    //     <DropdownLink to="/add-issue">Add Issue</DropdownLink>
+    //     <DropdownItem divider>Admin</DropdownItem>
+    //     <DropdownItem onClick={signOut}>Log Out</DropdownItem>
+    //   </DropdownMenu>
+    // </Dropdown>
   )
 }
 

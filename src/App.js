@@ -21,7 +21,7 @@ import useAuth from './hooks/useAuth'
 import './App.scss'
 
 /**
- * @type {React.Context<{ isLoggedIn: boolean, token: string, setIsLoggedIn: () => void, setToken: () => void, userRole: string }>}
+ * @type {React.Context<{ isLoggedIn: boolean, token: string, setIsLoggedIn: () => void, setToken: () => void, userRole: string, setUserRole: () => void }>}
  */
 const AuthContext = React.createContext()
 
@@ -32,7 +32,9 @@ function App() {
   const [userRole, setUserRole] = useState('')
 
   return (
-    <AuthContext.Provider value={{ token, setToken, isLoggedIn, setIsLoggedIn, userRole }}>
+    <AuthContext.Provider
+      value={{ token, setToken, isLoggedIn, setIsLoggedIn, userRole, setUserRole }}
+    >
       <Persist
         name="north-shore-notes"
         data={{ token, isLoggedIn, userRole }}
