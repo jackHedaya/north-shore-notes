@@ -23,6 +23,15 @@ export default function newFetch(url, { method = 'GET', headers, body, ...option
         return Promise.resolve()
       }
     }
+    
     throw resp
   })
+    .then(resp => {
+      if (resp.ok) return resp.json()
+      throw resp
+    })
+    .catch(e => {
+      console.error(e)
+      throw e
+    })
 }

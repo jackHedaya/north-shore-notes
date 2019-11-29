@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react'
+import { getIssue } from '../services/issue.service'
 
 export default ({ volume, issue }) => {
   const [issues, setIssues] = useState([])
 
   useEffect(() => {
-    fetch(`/issue?volume=${volume}&issue=${issue}`)
-      .then(resp => resp.json())
+    if (!issue || !volume) return
+
+    getIssue({ volume, issue })
       .then(body => setIssues(body))
       .catch(_ => setIssues([]))
   }, [issue, volume])
