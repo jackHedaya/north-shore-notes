@@ -4,6 +4,8 @@ import { Link, withRouter } from 'react-router-dom'
 import useUser from '../hooks/useUser'
 import useAuth from '../hooks/useAuth'
 
+import capitalize from '../_helpers/capitalize'
+
 import NSN_Logo from '../assets/NSN_Logo.png'
 import NSN_Logo_Text from '../assets/NSN_Logo_Text.png'
 
@@ -87,7 +89,7 @@ function CustomDropdown(props) {
 
   return (
     <div className="dropdown">
-      <div className="greeting">Hello, {props.name.toUpperCase()}</div>
+      <div className="greeting">Hello, {capitalize(props.name)}</div>
       {userRole === 'ADMIN' && (
         <div className="dropdown-content">
           <DropdownLink to="/manage-users">Manage Users</DropdownLink>
