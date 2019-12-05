@@ -115,10 +115,13 @@
   }
 
   .greeting:hover {
+    border-radius: 5px;
     color: #a1a1a1;
   }
 
   .dropdown-content {
+    float: right;
+    margin-top: 10px;
     border-radius: 5px;
     cursor: pointer;
     display: none;
@@ -130,6 +133,7 @@
     position: absolute;
 
     .link {
+      border-radius: 5px;
       font-size: 14px;
       padding-left: 8px;
       padding-right: 8px;
@@ -139,8 +143,12 @@
   }
 }
 
-.dropdown:hover > .dropdown-content {
-  display: block;
+.greeting:hover ~ .dropdown-content {
+  display: inline-block;
+}
+
+.dropdown-content:hover {
+  display: inline-block;
 
   .link:hover {
     background-color: #ededed;
