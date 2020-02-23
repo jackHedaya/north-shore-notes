@@ -6442,10 +6442,10 @@ internal-ip@^4.3.0:
     default-gateway "^4.2.0"
     ipaddr.js "^1.9.0"
 
-interweave@^12.2.0:
-  version "12.2.0"
-  resolved "https://registry.yarnpkg.com/interweave/-/interweave-12.2.0.tgz#addd2c05dad2b46f87b3af67ca84a17fa997bfd3"
-  integrity sha512-3EZv6ipccU1NvhjVncupH6PcFjKoNDuFEJ4mKMaImBqwZHXjE9OpU2rTC2Ac3g8mXqKACRrhwv3HAtTHqiEN6A==
+interweave@^12.2.1:
+  version "12.2.1"
+  resolved "https://registry.yarnpkg.com/interweave/-/interweave-12.2.1.tgz#8a231e8e5f6c2fba98aa459f5a719caaa4a410dc"
+  integrity sha512-bwEM42pds2FopRUtNLbhsPUqBNQIAfa/mCBQBpTG4/oR3g7iHeKzHSV+0hrJjqaZUdCtF5wVTtyWxtImM3fHNw==
   dependencies:
     "@types/react" "*"
     escape-html "^1.0.3"
